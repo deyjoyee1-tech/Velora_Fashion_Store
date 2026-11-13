@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | VÊLORA</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        FREE SHIPPING ON ORDERS ABOVE ₹1999
+        &nbsp; | &nbsp; EASY RETURNS
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+
+        <div class="logo">
+            VÊLORA
+            <span>FASHION FOR A BRIGHTER YOU</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">HOME</a>
+            <a href="categories.html?category=ALL">SHOP</a>
+            <a href="categories.html?category=MEN">MEN</a>
+            <a href="categories.html?category=WOMEN">WOMEN</a>
+            <a href="categories.html?category=KIDS">KIDS</a>
+            <a href="categories.html?category=MATERNITY">MATERNITY</a>
+        </nav>
+
+        <div class="header-icons">
+            <a href="profile.html">ACCOUNT</a>
+            <a href="wishlist.html">♡</a>
+            <a href="cart.html" class="bag-link">
+                BAG (<span id="cart-count">0</span>)
+            </a>
+        </div>
+
+    </header>
+
+
+    <main class="product-details-page">
+
+        <!-- Breadcrumb -->
+        <div class="product-breadcrumb">
+            <a href="../index.html">HOME</a>
+            <span> / </span>
+            <a href="categories.html?category=ALL">SHOP</a>
+            <span> / </span>
+            <span>PRODUCT DETAILS</span>
+        </div>
+
+
+        <!-- PRODUCT GALLERY -->
+        <div class="product-gallery">
+
+            <!-- Two Image Thumbnails -->
+            <div class="product-detail-thumbnails" id="detail-thumbnails">
+                <!-- Images will be added using JavaScript -->
+            </div>
+
+            <!-- Main Product Image -->
+            <div class="product-detail-image">
+
+                <img
+                    id="detail-image"
+                    src="../images/default-product.jpg"
+                    alt="VÊLORA fashion product"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT INFORMATION -->
+        <div class="product-detail-info">
+
+            <p class="product-detail-brand">
+                VÊLORA EXCLUSIVE COLLECTION
+            </p>
+
+            <p id="detail-category">COLLECTION</p>
+
+            <h1 id="detail-name">Product Name</h1>
+
+            <div class="product-detail-rating">
+                <span>★★★★★</span>
+                <small>Fashion made for everyday elegance</small>
+            </div>
+
+            <h2 id="detail-price">₹0</h2>
+
+            <p class="product-detail-description">
+                Discover effortless style with VÊLORA.
+                Designed for comfort, quality and everyday elegance.
+                Find your perfect look with our latest collection.
+            </p>
+
+            <div class="product-detail-divider"></div>
+
+
+            <!-- COLOUR SELECTION -->
+            <div class="detail-option">
+
+                <label>SELECT COLOUR</label>
+
+                <div
+                    class="product-colour-options"
+                    id="detail-colours">
+
+                    <button
+                        type="button"
+                        class="colour-swatch selected"
+                        data-colour="Black"
+                        aria-label="Black"
+                        title="Black"
+                        style="background-color: #222222;">
+                    </button>
+
+                    <button
+                        type="button"
+                        class="colour-swatch"
+                        data-colour="White"
+                        aria-label="White"
+                        title="White"
+                        style="background-color: #f5f1e8;">
+                    </button>
+
+                    <button
+                        type="button"
+                        class="colour-swatch"
+                        data-colour="Beige"
+                        aria-label="Beige"
+                        title="Beige"
+                        style="background-color: #c9ad8a;">
+                    </button>
+
+                    <button
+                        type="button"
+                        class="colour-swatch"
+                        data-colour="Brown"
+                        aria-label="Brown"
+                        title="Brown"
+                        style="background-color: #754c35;">
+                    </button>
+
+                </div>
+
+                <p id="selected-colour">
+                    Selected colour: Black
+                </p>
+
+            </div>
+
+
+            <!-- SIZE SELECTION -->
+            <div class="detail-option">
+
+                <label for="detail-size">SELECT SIZE</label>
+
+                <select id="detail-size">
+                    <option value="">Choose your size</option>
+                    <option value="S">Small (S)</option>
+                    <option value="M">Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">Extra Large (XL)</option>
+                </select>
+
+                <p class="size-guide-note">
+                    Available sizes: S, M, L and XL
+                </p>
+
+            </div>
+
+
+            <!-- QUANTITY -->
+            <div class="detail-option">
+
+                <label for="detail-quantity">QUANTITY</label>
+
+                <input
+                    type="number"
+                    id="detail-quantity"
+                    value="1"
+                    min="1"
+                    max="10"
+                >
+
+            </div>
+
+
+            <!-- SHOPPING BUTTONS -->
+            <button id="detail-add-cart" class="shop-button">
+                ADD TO BAG
+            </button>
+
+            <button id="detail-buy-now" class="buy-now-button">
+                BUY NOW
+            </button>
+
+            <button
+                id="detail-wishlist"
+                class="wishlist-detail-button">
+                ♡ ADD TO WISHLIST
+            </button>
+
+            <p id="detail-message" aria-live="polite"></p>
+
+            <div class="product-detail-divider"></div>
+
+
+            <!-- PRODUCT DETAILS -->
+            <div class="product-description">
+
+                <h3>PRODUCT DETAILS</h3>
+
+                <p>
+                    Made for a perfect blend of comfort and style.
+                    A beautiful addition to your wardrobe.
+                </p>
+
+                <p>
+                    Easy to style • Comfortable fit • Elegant design
+                </p>
+
+                <div class="product-extra-information">
+
+                    <div>
+                        <span>MATERIAL</span>
+                        <p id="detail-material">Premium Fabric</p>
+                    </div>
+
+                    <div>
+                        <span>COLLECTION</span>
+                        <p id="detail-collection">VÊLORA Fashion</p>
+                    </div>
+
+                    <div>
+                        <span>DELIVERY</span>
+                        <p id="detail-delivery">
+                            Estimated 5–7 business days
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SHOPPING BENEFITS -->
+            <div class="product-service-information">
+
+                <div>
+                    <span>♡</span>
+                    <p>QUALITY FASHION</p>
+                </div>
+
+                <div>
+                    <span>↻</span>
+                    <p>EASY RETURNS</p>
+                </div>
+
+                <div>
+                    <span>♧</span>
+                    <p>SECURE SHOPPING</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h2>VÊLORA</h2>
+
+        <p>Fashion for a Brighter You.</p>
+
+        <p>
+            <a href="categories.html?category=ALL">Shop</a> |
+            <a href="profile.html">My Account</a> |
+            <a href="orders.html">My Orders</a> |
+            <a href="support.html">Contact Us</a> |
+            <a href="faq.html">FAQs</a>
+        </p>
+
+        <p>© 2026 VÊLORA. All Rights Reserved.</p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="../js/script.js"></script>
+    <script src="../js/product-details.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support | VÊLORA</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="announcement-bar">
+        FREE SHIPPING ON ORDERS ABOVE ₹1999
+        &nbsp; | &nbsp; EASY RETURNS
+    </div>
+
+    <header class="main-header">
+
+        <div class="logo">
+            VÊLORA
+            <span>FASHION FOR A BRIGHTER YOU</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">HOME</a>
+            <a href="categories.html?category=ALL">SHOP</a>
+            <a href="categories.html?category=MEN">MEN</a>
+            <a href="categories.html?category=WOMEN">WOMEN</a>
+            <a href="categories.html?category=KIDS">KIDS</a>
+            <a href="categories.html?category=MATERNITY">MATERNITY</a>
+            <a href="profile.html">ACCOUNT</a>
+            <a href="orders.html">MY ORDERS</a>
+            <a href="faq.html">FAQs</a>
+        </nav>
+
+        <div class="header-icons">
+            <a href="wishlist.html" aria-label="Wishlist">♡</a>
+            <a href="cart.html" aria-label="Shopping bag">
+                BAG <span id="cart-count">0</span>
+            </a>
+        </div>
+
+    </header>
+
+    <main class="support-container">
+
+        <div class="support-heading">
+            <p class="section-subtitle">WE ARE HERE TO HELP</p>
+            <h1>CONTACT US</h1>
+            <span>
+                Have a question? Our team is happy to help you.
+            </span>
+        </div>
+
+        <div class="support-quick-links">
+
+            <a href="orders.html">
+                <span>01</span>
+                <h3>ORDER HELP</h3>
+                <p>Check your purchases and delivery status.</p>
+            </a>
+
+            <a href="faq.html">
+                <span>02</span>
+                <h3>FAQs</h3>
+                <p>Find answers to common shopping questions.</p>
+            </a>
+
+            <a href="categories.html?category=ALL">
+                <span>03</span>
+                <h3>SHOPPING</h3>
+                <p>Explore our latest clothing collections.</p>
+            </a>
+
+        </div>
+
+        <div class="support-content">
+
+            <div class="support-information">
+
+                <h2>GET IN TOUCH</h2>
+
+                <p>
+                    We want your VÊLORA shopping experience
+                    to be simple, comfortable and enjoyable.
+                </p>
+
+                <div>
+                    <h3>EMAIL SUPPORT</h3>
+                    <p>
+                        <a href="mailto:support@velora.com">
+                            support@velora.com
+                        </a>
+                    </p>
+                </div>
+
+                <div>
+                    <h3>SUPPORT HOURS</h3>
+                    <p>Monday – Saturday</p>
+                    <p>10:00 AM – 6:00 PM</p>
+                </div>
+
+                <div>
+                    <h3>ORDER ASSISTANCE</h3>
+                    <p>
+                        Need help with an order, delivery,
+                        return or product? Send us a message.
+                    </p>
+                </div>
+
+                <div>
+                    <h3>FREQUENTLY ASKED QUESTIONS</h3>
+                    <p>
+                        Visit our <a href="faq.html">FAQ page</a>
+                        for quick answers.
+                    </p>
+                </div>
+
+            </div>
+
+            <form id="support-form" class="support-form">
+
+                <h2>SEND US A MESSAGE</h2>
+
+                <p class="support-form-intro">
+                    Fill in the details below and describe how we can help.
+                </p>
+
+                <label for="support-name">Your Name</label>
+                <input
+                    type="text"
+                    id="support-name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+                >
+
+                <label for="support-email">Email Address</label>
+                <input
+                    type="email"
+                    id="support-email"
+                    name="email"
+                    placeholder="Enter your email address"
+                    autocomplete="email"
+                    required
+                >
+
+                <label for="support-reason">Reason for Contact</label>
+
+                <select id="support-reason" name="reason" required>
+                    <option value="">Select a reason</option>
+                    <option value="Order Related">Order Related</option>
+                    <option value="Delivery Issue">Delivery Issue</option>
+                    <option value="Return or Refund">Return or Refund</option>
+                    <option value="Product Information">Product Information</option>
+                    <option value="Payment Issue">Payment Issue</option>
+                    <option value="Account Related">Account Related</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="support-message">Your Message</label>
+
+                <textarea
+                    id="support-message"
+                    name="message"
+                    rows="5"
+                    placeholder="Write your message here..."
+                    required
+                ></textarea>
+
+                <button type="submit">SEND MESSAGE</button>
+
+                <p id="support-response" aria-live="polite"></p>
+
+                <p class="support-form-intro">
+                    This contact form is a frontend demonstration.
+                    Messages are not sent to a real support team.
+                </p>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <h2>VÊLORA</h2>
+        <p>Fashion for a Brighter You.</p>
+        <p>© 2026 VÊLORA. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/support.js"></script>
+
+</body>
+</html>

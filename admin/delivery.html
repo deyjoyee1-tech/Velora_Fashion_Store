@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Management | VÊLORA</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-page">
+
+    <header class="admin-header">
+
+        <div class="admin-logo">
+            VÊLORA
+            <span>ADMIN PANEL</span>
+        </div>
+
+        <div class="admin-header-right">
+            <span>Welcome, Admin</span>
+            <a href="login.html" class="admin-logout">LOG OUT</a>
+        </div>
+
+    </header>
+
+    <div class="admin-container">
+
+        <aside class="admin-sidebar">
+
+            <h3>MAIN MENU</h3>
+
+            <a href="dashboard.html">
+                <span>▦</span> Dashboard
+            </a>
+
+            <a href="manage-categories.html">
+                <span>▤</span> Manage Categories
+            </a>
+
+            <a href="manage-products.html">
+                <span>♧</span> Manage Products
+            </a>
+
+            <a href="manage-orders.html">
+                <span>☷</span> Customer Orders
+            </a>
+
+            <a href="delivery.html" class="active">
+                <span>➜</span> Delivery Management
+            </a>
+
+            <div class="sidebar-bottom">
+                <a href="../index.html">VIEW CUSTOMER STORE</a>
+                <a href="login.html">LOG OUT</a>
+            </div>
+
+        </aside>
+
+        <main class="admin-main">
+
+            <div class="admin-page-heading">
+                <div>
+                    <p>VÊLORA MANAGEMENT SYSTEM</p>
+                    <h1>Delivery Management</h1>
+                    <span>
+                        Manage delivery records and track customer orders.
+                    </span>
+                </div>
+            </div>
+
+            <section class="admin-stats">
+
+                <div class="admin-stat-card">
+                    <span>TOTAL DELIVERIES</span>
+                    <h2 id="total-deliveries">4</h2>
+                    <p>All delivery records</p>
+                </div>
+
+                <div class="admin-stat-card">
+                    <span>IN TRANSIT</span>
+                    <h2 id="in-transit">2</h2>
+                    <p>Currently on the way</p>
+                </div>
+
+                <div class="admin-stat-card">
+                    <span>DELIVERED</span>
+                    <h2 id="delivered">1</h2>
+                    <p>Successfully delivered</p>
+                </div>
+
+                <div class="admin-stat-card">
+                    <span>PENDING</span>
+                    <h2 id="delivery-pending">1</h2>
+                    <p>Awaiting dispatch</p>
+                </div>
+
+            </section>
+
+            <section class="admin-section">
+
+                <div class="admin-section-heading">
+                    <div>
+                        <h2>Delivery Records</h2>
+                        <p>View delivery information and update order progress.</p>
+                    </div>
+                </div>
+
+                <div class="admin-table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+                            <tr>
+                                <th>DELIVERY ID</th>
+                                <th>ORDER ID</th>
+                                <th>CUSTOMER</th>
+                                <th>DELIVERY PARTNER</th>
+                                <th>EXPECTED DATE</th>
+                                <th>STATUS</th>
+                                <th>UPDATE STATUS</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="delivery-table-body"></tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/admin-delivery.js"></script>
+
+</body>
+</html>

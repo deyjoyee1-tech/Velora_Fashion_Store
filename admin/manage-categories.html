@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Categories | VÊLORA</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-page">
+
+    <header class="admin-header">
+
+        <div class="admin-logo">
+            VÊLORA
+            <span>ADMIN PANEL</span>
+        </div>
+
+        <div class="admin-header-right">
+            <span>Welcome, Admin</span>
+            <a href="login.html" class="admin-logout">LOG OUT</a>
+        </div>
+
+    </header>
+
+    <div class="admin-container">
+
+        <aside class="admin-sidebar">
+
+            <h3>MAIN MENU</h3>
+
+            <a href="dashboard.html">
+                <span>▦</span> Dashboard
+            </a>
+
+            <a href="manage-categories.html" class="active">
+                <span>▤</span> Manage Categories
+            </a>
+
+            <a href="manage-products.html">
+                <span>♧</span> Manage Products
+            </a>
+
+            <a href="manage-orders.html">
+                <span>☷</span> Customer Orders
+            </a>
+
+            <a href="delivery.html">
+                <span>➜</span> Delivery Management
+            </a>
+
+            <div class="sidebar-bottom">
+                <a href="../index.html">VIEW CUSTOMER STORE</a>
+                <a href="login.html">LOG OUT</a>
+            </div>
+
+        </aside>
+
+        <main class="admin-main">
+
+            <div class="admin-page-heading">
+                <div>
+                    <p>VÊLORA MANAGEMENT SYSTEM</p>
+                    <h1>Manage Categories</h1>
+                    <span>
+                        Organise the clothing categories available in your store.
+                    </span>
+                </div>
+            </div>
+
+            <section class="category-admin-card">
+
+                <div class="category-admin-heading">
+
+                    <div>
+                        <h2>Store Categories</h2>
+                        <p>Manage the clothing sections of your store.</p>
+                    </div>
+
+                    <button type="button" id="show-category-form">
+                        + ADD NEW CATEGORY
+                    </button>
+
+                </div>
+
+                <form id="category-form" hidden>
+
+                    <h3>Add a New Category</h3>
+
+                    <label for="new-category">Category Name</label>
+
+                    <input
+                        type="text"
+                        id="new-category"
+                        placeholder="Enter category name"
+                        required
+                    >
+
+                    <div class="category-form-buttons">
+
+                        <button type="submit">SAVE CATEGORY</button>
+
+                        <button type="button" id="cancel-category">
+                            CANCEL
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <p id="category-message"></p>
+
+                <div id="admin-category-list" class="admin-category-list">
+
+                    <div class="admin-category-item">
+                        <div>
+                            <h3>Men</h3>
+                            <p>Clothing for men</p>
+                        </div>
+                        <span>ACTIVE</span>
+                    </div>
+
+                    <div class="admin-category-item">
+                        <div>
+                            <h3>Women</h3>
+                            <p>Clothing for women</p>
+                        </div>
+                        <span>ACTIVE</span>
+                    </div>
+
+                    <div class="admin-category-item">
+                        <div>
+                            <h3>Kids</h3>
+                            <p>Clothing for kids</p>
+                        </div>
+                        <span>ACTIVE</span>
+                    </div>
+
+                    <div class="admin-category-item">
+                        <div>
+                            <h3>Maternity</h3>
+                            <p>Maternity clothing</p>
+                        </div>
+                        <span>ACTIVE</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/admin-categories.js"></script>
+
+</body>
+</html>

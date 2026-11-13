@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | VÊLORA</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-page">
+
+    <!-- ADMIN HEADER -->
+    <header class="admin-header">
+
+        <div class="admin-logo">
+            VÊLORA
+            <span>ADMIN PANEL</span>
+        </div>
+
+        <div class="admin-header-right">
+            <span>Welcome, Admin</span>
+            <a href="login.html" class="admin-logout">LOG OUT</a>
+        </div>
+
+    </header>
+
+    <div class="admin-container">
+
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar">
+
+            <h3>MAIN MENU</h3>
+
+            <a href="dashboard.html" class="active">
+                <span>▦</span> Dashboard
+            </a>
+
+            <a href="manage-categories.html">
+                <span>▤</span> Manage Categories
+            </a>
+
+            <a href="manage-products.html">
+                <span>♧</span> Manage Products
+            </a>
+
+            <a href="manage-orders.html">
+                <span>☷</span> Customer Orders
+            </a>
+
+            <a href="delivery.html">
+                <span>➜</span> Delivery Management
+            </a>
+
+            <div class="sidebar-bottom">
+
+                <a href="../index.html">
+                    VIEW CUSTOMER STORE
+                </a>
+
+                <a href="login.html">
+                    LOG OUT
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN DASHBOARD -->
+        <main class="admin-main">
+
+            <!-- PAGE HEADING -->
+            <div class="admin-page-heading">
+
+                <div>
+                    <p>VÊLORA MANAGEMENT SYSTEM</p>
+
+                    <h1>Dashboard</h1>
+
+                    <span>
+                        Welcome to your store overview.
+                        Monitor products, orders and daily activities.
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- STATISTICS -->
+            <section class="admin-stats">
+
+                <div class="admin-stat-card">
+                    <span>TOTAL PRODUCTS</span>
+                    <h2 id="dashboard-total-products">0</h2>
+                    <p>Products in store</p>
+                </div>
+
+                <div class="admin-stat-card">
+                    <span>TOTAL CATEGORIES</span>
+                    <h2 id="dashboard-total-categories">0</h2>
+                    <p>Available categories</p>
+                </div>
+
+                <div class="admin-stat-card">
+                    <span>TOTAL ORDERS</span>
+                    <h2 id="dashboard-total-orders">0</h2>
+                    <p>Customer orders</p>
+                </div>
+
+                <div class="admin-stat-card">
+                    <span>PENDING ORDERS</span>
+                    <h2 id="dashboard-pending-orders">0</h2>
+                    <p>Orders requiring attention</p>
+                </div>
+
+                <div class="admin-stat-card">
+                    <span>TOTAL REVENUE</span>
+                    <h2 id="dashboard-total-revenue">₹0</h2>
+                    <p>Value of placed orders</p>
+                </div>
+
+            </section>
+
+            <!-- QUICK ACTIONS -->
+            <section class="admin-quick-actions">
+
+                <h2>QUICK ACTIONS</h2>
+
+                <p class="admin-dashboard-description">
+                    Access important store management features.
+                </p>
+
+                <div class="admin-action-grid">
+
+                    <a href="manage-products.html">
+                        <span>＋</span>
+                        <h3>Add New Product</h3>
+                        <p>
+                            Add new clothing products and update
+                            your product collection.
+                        </p>
+                    </a>
+
+                    <a href="manage-categories.html">
+                        <span>▦</span>
+                        <h3>Manage Categories</h3>
+                        <p>
+                            Organise Men, Women, Kids and
+                            Maternity collections.
+                        </p>
+                    </a>
+
+                    <a href="manage-orders.html">
+                        <span>☷</span>
+                        <h3>Customer Orders</h3>
+                        <p>
+                            View customer purchases and
+                            update order statuses.
+                        </p>
+                    </a>
+
+                    <a href="delivery.html">
+                        <span>➜</span>
+                        <h3>Delivery Management</h3>
+                        <p>
+                            Monitor deliveries and update
+                            delivery information.
+                        </p>
+                    </a>
+
+                </div>
+
+            </section>
+
+            <!-- RECENT ORDERS -->
+            <section class="admin-recent-orders">
+
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>RECENT ORDERS</h2>
+
+                        <p class="admin-dashboard-description">
+                            Keep track of the latest customer purchases.
+                        </p>
+                    </div>
+
+                    <a href="manage-orders.html">
+                        VIEW ALL ORDERS →
+                    </a>
+
+                </div>
+
+                <div class="admin-table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>ORDER ID</th>
+                                <th>CUSTOMER</th>
+                                <th>PRODUCT</th>
+                                <th>AMOUNT</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="dashboard-recent-orders">
+
+                            <tr>
+                                <td colspan="5">
+                                    Loading orders...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- ADMIN FOOTER -->
+            <footer class="admin-dashboard-footer">
+                VÊLORA STORE MANAGEMENT SYSTEM · © 2026
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="../js/admin-dashboard.js"></script>
+
+</body>
+</html>

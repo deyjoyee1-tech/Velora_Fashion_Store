@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products | VÊLORA</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-page">
+
+    <header class="admin-header">
+
+        <div class="admin-logo">
+            VÊLORA
+            <span>ADMIN PANEL</span>
+        </div>
+
+        <div class="admin-header-right">
+            <span>Welcome, Admin</span>
+            <a href="login.html" class="admin-logout">LOG OUT</a>
+        </div>
+
+    </header>
+
+    <div class="admin-container">
+
+        <aside class="admin-sidebar">
+
+            <h3>MAIN MENU</h3>
+
+            <a href="dashboard.html">
+                <span>▦</span> Dashboard
+            </a>
+
+            <a href="manage-categories.html">
+                <span>▤</span> Manage Categories
+            </a>
+
+            <a href="manage-products.html" class="active">
+                <span>♧</span> Manage Products
+            </a>
+
+            <a href="manage-orders.html">
+                <span>☷</span> Customer Orders
+            </a>
+
+            <a href="delivery.html">
+                <span>➜</span> Delivery Management
+            </a>
+
+            <div class="sidebar-bottom">
+
+                <a href="../index.html">VIEW CUSTOMER STORE</a>
+                <a href="login.html">LOG OUT</a>
+
+            </div>
+
+        </aside>
+
+        <main class="admin-main">
+
+            <div class="admin-page-heading">
+                <div>
+                    <p>VÊLORA MANAGEMENT SYSTEM</p>
+                    <h1>Manage Products</h1>
+                    <span>
+                        Add, update and organise your clothing collection.
+                    </span>
+                </div>
+            </div>
+
+            <section class="product-admin-card">
+
+                <div class="product-admin-heading">
+
+                    <div>
+                        <h2>All Products</h2>
+                        <p>Manage the products displayed in your store.</p>
+                    </div>
+
+                    <button type="button" id="show-product-form">
+                        + ADD NEW PRODUCT
+                    </button>
+
+                </div>
+
+                <form id="admin-product-form" hidden>
+
+                    <h2 id="product-form-title">Add New Product</h2>
+
+                    <input type="hidden" id="edit-product-id">
+
+                    <div class="admin-product-form-grid">
+
+                        <div>
+                            <label for="admin-product-name">Product Name</label>
+                            <input
+                                type="text"
+                                id="admin-product-name"
+                                placeholder="Enter product name"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="admin-product-price">Price (₹)</label>
+                            <input
+                                type="number"
+                                id="admin-product-price"
+                                min="1"
+                                placeholder="Enter price"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="admin-product-category">Category</label>
+                            <select id="admin-product-category" required>
+                                <option value="">Select Category</option>
+                                <option value="MEN">Men</option>
+                                <option value="WOMEN">Women</option>
+                                <option value="KIDS">Kids</option>
+                                <option value="MATERNITY">Maternity</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="admin-product-material">Material</label>
+                            <select id="admin-product-material" required>
+                                <option value="">Select Material</option>
+                                <option value="COTTON">Cotton</option>
+                                <option value="DENIM">Denim</option>
+                                <option value="LINEN">Linen</option>
+                                <option value="SILK">Silk</option>
+                                <option value="POLYESTER">Polyester</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="admin-product-image">Product Image URL</label>
+                            <input
+                                type="url"
+                                id="admin-product-image"
+                                placeholder="Paste image URL"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="admin-product-delivery">Delivery Time</label>
+                            <select id="admin-product-delivery" required>
+                                <option value="2">2 Days</option>
+                                <option value="5">5 Days</option>
+                                <option value="7">7 Days</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="admin-product-form-buttons">
+
+                        <button type="submit" id="save-product-button">
+                            SAVE PRODUCT
+                        </button>
+
+                        <button type="button" id="cancel-product-form">
+                            CANCEL
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <p id="admin-product-message"></p>
+
+                <div class="admin-products-table-wrapper">
+
+                    <table class="admin-products-table">
+
+                        <thead>
+                            <tr>
+                                <th>PRODUCT</th>
+                                <th>CATEGORY</th>
+                                <th>PRICE</th>
+                                <th>MATERIAL</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="admin-products-list"></tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/admin-products.js"></script>
+
+</body>
+</html>

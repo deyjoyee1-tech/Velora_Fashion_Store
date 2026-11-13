@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Orders | VÊLORA</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-page">
+
+    <header class="admin-header">
+
+        <div class="admin-logo">
+            VÊLORA
+            <span>ADMIN PANEL</span>
+        </div>
+
+        <div class="admin-header-right">
+            <span>Welcome, Admin</span>
+            <a href="login.html" class="admin-logout">LOG OUT</a>
+        </div>
+
+    </header>
+
+    <div class="admin-container">
+
+        <aside class="admin-sidebar">
+
+            <h3>MAIN MENU</h3>
+
+            <a href="dashboard.html">
+                <span>▦</span> Dashboard
+            </a>
+
+            <a href="manage-categories.html">
+                <span>▤</span> Manage Categories
+            </a>
+
+            <a href="manage-products.html">
+                <span>♧</span> Manage Products
+            </a>
+
+            <a href="manage-orders.html" class="active">
+                <span>☷</span> Customer Orders
+            </a>
+
+            <a href="delivery.html">
+                <span>➜</span> Delivery Management
+            </a>
+
+            <div class="sidebar-bottom">
+                <a href="../index.html">VIEW CUSTOMER STORE</a>
+                <a href="login.html">LOG OUT</a>
+            </div>
+
+        </aside>
+
+        <main class="admin-main">
+
+            <div class="admin-page-heading">
+                <div>
+                    <p>VÊLORA MANAGEMENT SYSTEM</p>
+                    <h1>Customer Orders</h1>
+                    <span>
+                        View, track and manage customer purchases.
+                    </span>
+                </div>
+            </div>
+
+            <section class="order-admin-stats">
+
+                <div>
+                    <span>TOTAL ORDERS</span>
+                    <h2 id="total-orders">4</h2>
+                    <p>All customer orders</p>
+                </div>
+
+                <div>
+                    <span>PENDING</span>
+                    <h2 id="pending-orders">2</h2>
+                    <p>Awaiting processing</p>
+                </div>
+
+                <div>
+                    <span>SHIPPED</span>
+                    <h2 id="shipped-orders">1</h2>
+                    <p>On the way</p>
+                </div>
+
+                <div>
+                    <span>DELIVERED</span>
+                    <h2 id="delivered-orders">1</h2>
+                    <p>Successfully delivered</p>
+                </div>
+
+            </section>
+
+            <section class="order-admin-card">
+
+                <div class="order-admin-heading">
+
+                    <div>
+                        <h2>All Customer Orders</h2>
+                        <p>Review orders and manage their status.</p>
+                    </div>
+
+                    <select id="order-status-filter">
+                        <option value="ALL">All Orders</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Shipped">Shipped</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+
+                </div>
+
+                <div class="admin-table-wrapper">
+
+                    <table class="orders-table">
+
+                        <thead>
+                            <tr>
+                                <th>ORDER ID</th>
+                                <th>CUSTOMER</th>
+                                <th>PRODUCT</th>
+                                <th>AMOUNT</th>
+                                <th>DATE</th>
+                                <th>STATUS</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="admin-orders-list"></tbody>
+
+                    </table>
+
+                </div>
+
+                <p id="order-message"></p>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/admin-orders.js"></script>
+
+</body>
+</html>

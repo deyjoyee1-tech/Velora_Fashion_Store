@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Bag | VÊLORA</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        FREE SHIPPING ON ORDERS ABOVE ₹1999
+        &nbsp; | &nbsp; EASY RETURNS
+        &nbsp; | &nbsp; NEW COLLECTION OUT NOW
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+
+        <div class="logo">
+            VÊLORA
+            <span>FASHION FOR A BRIGHTER YOU</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">HOME</a>
+            <a href="categories.html?category=ALL">SHOP</a>
+            <a href="categories.html?category=MEN">MEN</a>
+            <a href="categories.html?category=WOMEN">WOMEN</a>
+            <a href="categories.html?category=KIDS">KIDS</a>
+            <a href="categories.html?category=MATERNITY">MATERNITY</a>
+        </nav>
+
+        <div class="header-icons">
+            <a href="profile.html">ACCOUNT</a>
+            <a href="wishlist.html">♡</a>
+            <a href="cart.html" class="bag-link">
+                BAG (<span id="cart-count">0</span>)
+            </a>
+        </div>
+
+    </header>
+
+    <main class="cart-page">
+
+        <!-- Breadcrumb -->
+        <div class="product-breadcrumb">
+            <a href="../index.html">HOME</a>
+            <span> / </span>
+            <span>SHOPPING BAG</span>
+        </div>
+
+        <!-- Page Heading -->
+        <section class="cart-heading">
+            <p class="section-subtitle">YOUR SELECTION</p>
+            <h1>YOUR SHOPPING BAG</h1>
+            <p class="cart-description">
+                Review your favourite styles before checkout.
+            </p>
+        </section>
+
+        <!-- Shopping Progress -->
+        <div class="cart-progress">
+            <div class="cart-progress-step active">
+                <span>01</span>
+                <p>SHOPPING BAG</p>
+            </div>
+
+            <div class="cart-progress-line"></div>
+
+            <div class="cart-progress-step">
+                <span>02</span>
+                <p>CHECKOUT</p>
+            </div>
+
+            <div class="cart-progress-line"></div>
+
+            <div class="cart-progress-step">
+                <span>03</span>
+                <p>ORDER COMPLETE</p>
+            </div>
+        </div>
+
+        <!-- Cart Products -->
+        <section class="cart-content">
+
+            <div class="cart-products-section">
+
+                <div class="cart-section-heading">
+                    <h2>YOUR ITEMS</h2>
+                    <p>Review your selected products below.</p>
+                </div>
+
+                <div id="cart-items"></div>
+
+                <!-- Empty Cart -->
+                <div id="empty-cart" class="empty-cart" hidden>
+
+                    <div class="empty-cart-icon">♡</div>
+
+                    <h2>Your Bag Is Empty</h2>
+
+                    <p>
+                        Looks like you haven't added anything yet.
+                        Explore our latest collections and find your style.
+                    </p>
+
+                    <a href="categories.html?category=ALL" class="shop-button">
+                        CONTINUE SHOPPING
+                    </a>
+
+                </div>
+
+                <a href="categories.html?category=ALL" class="continue-shopping">
+                    ← CONTINUE SHOPPING
+                </a>
+
+            </div>
+
+            <!-- Order Summary -->
+            <aside id="cart-summary" class="cart-summary">
+
+                <h2>ORDER SUMMARY</h2>
+
+                <p class="summary-description">
+                    A summary of your selected items.
+                </p>
+
+               <div class="cart-summary-divider"></div>
+
+<!-- TOTAL MRP -->
+<div class="cart-summary-row">
+    <span>Total MRP</span>
+    <strong id="cart-mrp">₹0</strong>
+</div>
+
+<!-- TOTAL DISCOUNT -->
+<div class="cart-summary-row cart-discount-row">
+    <span>Discount</span>
+    <strong id="cart-discount">−₹0</strong>
+</div>
+
+<!-- SUBTOTAL -->
+<div class="cart-summary-row">
+    <span>Subtotal</span>
+    <strong id="cart-subtotal">₹0</strong>
+</div>
+               <div class="cart-summary-row">
+    <span>Shipping</span>
+    <strong id="cart-shipping">₹99</strong>
+</div>
+
+                <div class="cart-summary-row cart-total">
+                    <span>Estimated Total</span>
+                    <strong id="cart-total">₹0</strong>
+                </div>
+
+                <p class="shipping-note">
+                    Free shipping on orders above ₹1999.
+                    Shipping charges are calculated during checkout.
+                </p>
+
+                <a href="checkout.html" class="checkout-button">
+                    PROCEED TO CHECKOUT →
+                </a>
+
+                <div class="cart-security">
+                    <span>♡</span>
+                    <p>Secure shopping experience</p>
+                </div>
+
+                <div class="cart-security">
+                    <span>↻</span>
+                    <p>Easy return policy</p>
+                </div>
+
+            </aside>
+
+        </section>
+
+        <!-- Shopping Benefits -->
+        <section class="cart-benefits">
+
+            <div>
+                <span>♡</span>
+                <h3>QUALITY FASHION</h3>
+                <p>Carefully selected styles.</p>
+            </div>
+
+            <div>
+                <span>↻</span>
+                <h3>EASY RETURNS</h3>
+                <p>Shopping made comfortable.</p>
+            </div>
+
+            <div>
+                <span>✧</span>
+                <h3>FAST DELIVERY</h3>
+                <p>Your fashion delivered to you.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+
+        <h2>VÊLORA</h2>
+        <p>Fashion for a Brighter You.</p>
+
+        <p>
+            <a href="categories.html?category=ALL">Shop</a> |
+            <a href="profile.html">My Account</a> |
+            <a href="orders.html">My Orders</a> |
+            <a href="support.html">Contact Us</a> |
+            <a href="faq.html">FAQs</a>
+        </p>
+
+        <p>© 2026 VÊLORA. ALL RIGHTS RESERVED.</p>
+
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/cart.js"></script>
+
+</body>
+</html>

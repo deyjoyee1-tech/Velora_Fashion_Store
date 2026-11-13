@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | VÊLORA</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="announcement-bar">
+        FREE SHIPPING ON ORDERS ABOVE ₹1999
+        &nbsp; | &nbsp; EASY RETURNS
+    </div>
+
+    <header class="main-header">
+        <div class="logo">
+            VÊLORA
+            <span>FASHION FOR A BRIGHTER YOU</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">HOME</a>
+            <a href="categories.html?category=ALL">SHOP</a>
+            <a href="categories.html?category=MEN">MEN</a>
+            <a href="categories.html?category=WOMEN">WOMEN</a>
+            <a href="categories.html?category=KIDS">KIDS</a>
+            <a href="categories.html?category=MATERNITY">MATERNITY</a>
+            <a href="profile.html">ACCOUNT</a>
+            <a href="wishlist.html">WISHLIST</a>
+            <a href="cart.html">BAG</a>
+        </nav>
+    </header>
+
+    <main class="checkout-page">
+
+        <div class="checkout-heading">
+            <p class="section-subtitle">ONE LAST STEP</p>
+            <h1>CHECKOUT</h1>
+            <p>Almost yours. Complete your order below.</p>
+        </div>
+
+        <div class="checkout-layout">
+
+            <section class="checkout-form-section">
+
+                <form id="checkout-form">
+
+                    <div class="checkout-card">
+                        <h2>01. CONTACT INFORMATION</h2>
+
+                        <label for="customer-name">Full Name</label>
+                        <input type="text" id="customer-name" name="customerName"
+                            placeholder="Enter your full name"
+                            autocomplete="name" required>
+
+                        <label for="customer-email">Email Address</label>
+                        <input type="email" id="customer-email" name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="email" required>
+
+                        <label for="customer-phone">Mobile Number</label>
+                        <input type="tel" id="customer-phone" name="phone"
+                            placeholder="10-digit mobile number"
+                            pattern="[0-9]{10}" maxlength="10"
+                            inputmode="numeric" autocomplete="tel" required>
+                    </div>
+
+                    <div class="checkout-card">
+                        <h2>02. SHIPPING ADDRESS</h2>
+
+                        <label for="customer-address">House No. / Street Address</label>
+                        <textarea id="customer-address" name="address"
+                            placeholder="Enter your complete delivery address"
+                            autocomplete="street-address" required></textarea>
+
+                        <label for="customer-city">City</label>
+                        <input type="text" id="customer-city" name="city"
+                            placeholder="Enter your city"
+                            autocomplete="address-level2" required>
+
+                        <label for="customer-state">State</label>
+                        <input type="text" id="customer-state" name="state"
+                            placeholder="Enter your state"
+                            autocomplete="address-level1" required>
+
+                        <label for="customer-pincode">PIN Code</label>
+                        <input type="text" id="customer-pincode" name="pincode"
+                            placeholder="6-digit PIN code"
+                            pattern="[0-9]{6}" maxlength="6"
+                            inputmode="numeric" autocomplete="postal-code" required>
+                    </div>
+
+                    <div class="checkout-card">
+                        <h2>03. PAYMENT METHOD</h2>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment"
+                                value="Cash on Delivery" checked>
+                            <span>
+                                <strong>Cash on Delivery</strong>
+                                <small>Pay when your order arrives.</small>
+                            </span>
+                        </label>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="UPI">
+                            <span>
+                                <strong>UPI</strong>
+                                <small>Demo payment option.</small>
+                            </span>
+                        </label>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment"
+                                value="Credit / Debit Card">
+                            <span>
+                                <strong>Credit / Debit Card</strong>
+                                <small>Demo payment option.</small>
+                            </span>
+                        </label>
+
+                        <p class="payment-note">
+                            Online payment options are demonstration choices only.
+                            No actual payment will be collected.
+                        </p>
+                    </div>
+
+                    <div class="checkout-actions">
+                        <a href="cart.html" class="back-to-cart">
+                            ← BACK TO BAG
+                        </a>
+
+                        <button type="submit" class="place-order-button">
+                            PLACE ORDER
+                        </button>
+                    </div>
+
+                    <p id="checkout-message"
+                        class="checkout-message"
+                        aria-live="polite"></p>
+
+                </form>
+            </section>
+
+            <aside class="checkout-summary">
+
+                <h2>YOUR ORDER</h2>
+
+                <div id="checkout-items">
+                    <p>Loading your items...</p>
+                </div>
+
+                <div class="checkout-total-row">
+                    <span>Subtotal</span>
+                    <span id="checkout-subtotal">₹0</span>
+                </div>
+
+                <div class="checkout-total-row">
+                    <span>Shipping</span>
+                    <span id="checkout-shipping">₹0</span>
+                </div>
+
+                <div class="checkout-total-row checkout-grand-total">
+                    <strong>Total</strong>
+                    <strong id="checkout-total">₹0</strong>
+                </div>
+
+                <p class="checkout-shipping-note">
+                    Free shipping on orders above ₹1,999.
+                </p>
+
+                <div class="checkout-trust-note">
+                    <p>✓ SECURE CHECKOUT DEMO</p>
+                    <p>✓ CUSTOMER-FRIENDLY SHOPPING</p>
+                    <p>✓ EASY ORDER TRACKING DEMO</p>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2026 VÊLORA. ALL RIGHTS RESERVED.</p>
+        <p>FASHION FOR A BRIGHTER YOU.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/checkout.js"></script>
+
+</body>
+</html>

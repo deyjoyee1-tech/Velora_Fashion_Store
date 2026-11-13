@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All Clothing | VÊLORA</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="announcement-bar">
+        FREE SHIPPING ON ORDERS ABOVE ₹1999
+        &nbsp; | &nbsp; EASY RETURNS &nbsp; | &nbsp; NEW COLLECTION OUT NOW
+    </div>
+
+    <header class="main-header">
+        <div class="logo">
+            VÊLORA
+            <span>FASHION FOR A BRIGHTER YOU</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">HOME</a>
+            <a href="categories.html?category=ALL">SHOP</a>
+            <a href="categories.html?category=MEN">MEN</a>
+            <a href="categories.html?category=WOMEN">WOMEN</a>
+            <a href="categories.html?category=KIDS">KIDS</a>
+            <a href="categories.html?category=MATERNITY">MATERNITY</a>
+        </nav>
+
+        <div class="header-icons">
+            <a href="login.html">ACCOUNT</a>
+            <a href="wishlist.html">♡</a>
+            <a href="cart.html">BAG</a>
+        </div>
+    </header>
+
+    <main class="category-shop-page">
+
+        <p class="section-subtitle">EXPLORE VÊLORA</p>
+        <h1 id="category-heading">NEW ARRIVALS</h1>
+        <p class="category-intro">
+            Discover styles made for every moment.
+        </p>
+
+        
+        
+<!-- SHOPPING LAYOUT -->
+
+<!-- SHOPPING LAYOUT -->
+<div class="shop-layout">
+
+    <!-- LEFT FILTER SIDEBAR -->
+    <aside class="shop-filter">
+
+        <div class="filter-heading">
+            <h2>FILTERS</h2>
+            <button type="button" id="clear-filters">CLEAR ALL</button>
+        </div>
+
+        <!-- CATEGORY / STYLE -->
+        <div class="filter-group">
+            <h3>STYLE</h3>
+            <select id="filter-style">
+                <option value="ALL">All Styles</option>
+                <option value="ETHNIC">Ethnic</option>
+                <option value="WESTERN">Western</option>
+            </select>
+        </div>
+
+        <!-- PRICE -->
+        <div class="filter-group">
+            <h3>PRICE RANGE</h3>
+            <div class="price-inputs">
+                <input type="number" id="min-price"
+                    placeholder="Min ₹">
+                <input type="number" id="max-price"
+                    placeholder="Max ₹">
+            </div>
+        </div>
+
+        <!-- SIZE -->
+        <div class="filter-group">
+            <h3>SIZE</h3>
+            <select id="filter-size">
+              <option value="ALL">All Sizes</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+            </select>
+        </div>
+
+        <!-- MATERIAL -->
+        <div class="filter-group">
+            <h3>MATERIAL</h3>
+            <select id="filter-material">
+                <option value="ALL">All Materials</option>
+                <option value="Cotton">Cotton</option>
+                <option value="Denim">Denim</option>
+                <option value="Polyester">Polyester</option>
+                <option value="Linen">Linen</option>
+                <option value="Silk">Silk</option>
+            </select>
+        </div>
+
+        <!-- DELIVERY -->
+        <div class="filter-group">
+            <h3>DELIVERY TIME</h3>
+            <select id="filter-delivery">
+                <option value="ALL">Any Time</option>
+                <option value="2">Within 2 Days</option>
+                <option value="5">Within 5 Days</option>
+                <option value="7">Within 7 Days</option>
+            </select>
+        </div>
+
+        <button type="button" id="apply-filters">
+            APPLY FILTERS
+        </button>
+
+    </aside>
+
+
+    <!-- RIGHT PRODUCT AREA -->
+    <section class="shop-results">
+
+        <div class="shop-toolbar">
+
+            <p id="product-count">Showing products</p>
+
+            <select id="sort-products">
+                <option value="default">Recommended</option>
+                <option value="newest">What's New</option>
+                <option value="low-high">Price: Low to High</option>
+                <option value="high-low">Price: High to Low</option>
+            </select>
+
+        </div>
+
+        <!-- PRODUCT GRID -->
+        <div id="category-products" class="product-grid"></div>
+
+        <p id="no-products" hidden>
+            No products match your selected filters.
+            Try changing or clearing your filters.
+        </p>
+
+    </section>
+
+</div>
+
+
+              
+
+ 
+                   
+
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2026 VÊLORA. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/categories.js"></script>
+
+</body>
+</html>
