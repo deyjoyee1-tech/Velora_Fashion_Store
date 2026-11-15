@@ -4,13 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Products | VÊLORA</title>
+
+    <title>Product Inventory | VÊLORA</title>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="admin-page">
 
+    <!-- HEADER -->
     <header class="admin-header">
 
         <div class="admin-logo">
@@ -27,6 +34,7 @@
 
     <div class="admin-container">
 
+        <!-- SIDEBAR -->
         <aside class="admin-sidebar">
 
             <h3>MAIN MENU</h3>
@@ -52,83 +60,114 @@
             </a>
 
             <div class="sidebar-bottom">
-
                 <a href="../index.html">VIEW CUSTOMER STORE</a>
                 <a href="login.html">LOG OUT</a>
-
             </div>
 
         </aside>
 
-        <main class="admin-main">
+        <!-- MAIN CONTENT -->
+        <main class="admin-main velora-products-main">
 
-            <div class="admin-page-heading">
+            <!-- PAGE INTRO -->
+            <section class="velora-products-heading">
+
                 <div>
-                    <p>VÊLORA MANAGEMENT SYSTEM</p>
-                    <h1>Manage Products</h1>
-                    <span>
-                        Add, update and organise your clothing collection.
-                    </span>
+                    <p class="velora-eyebrow">VÊLORA MANAGEMENT SYSTEM / INVENTORY</p>
+                    <h1>Product Collection</h1>
+                    <p class="velora-products-subtitle">
+                        Curate your collection, manage inventory and keep your store up to date.
+                    </p>
                 </div>
-            </div>
 
-            <section class="product-admin-card">
+                <button type="button" id="show-product-form" class="velora-add-product-btn">
+                    <span>＋</span> ADD NEW PRODUCT
+                </button>
 
-                <div class="product-admin-heading">
+            </section>
 
+            <!-- INVENTORY SUMMARY -->
+            <section class="velora-product-stats">
+
+                <article class="velora-product-stat">
+                    <div class="velora-stat-icon">♧</div>
                     <div>
-                        <h2>All Products</h2>
-                        <p>Manage the products displayed in your store.</p>
+                        <span>TOTAL PRODUCTS</span>
+                        <strong id="product-total-count">0</strong>
+                        <small>Products in your inventory</small>
+                    </div>
+                </article>
+
+                <article class="velora-product-stat">
+                    <div class="velora-stat-icon">▤</div>
+                    <div>
+                        <span>CATEGORIES</span>
+                        <strong id="product-category-count">0</strong>
+                        <small>Active product categories</small>
+                    </div>
+                </article>
+
+                <article class="velora-product-stat">
+                    <div class="velora-stat-icon">◈</div>
+                    <div>
+                        <span>IN STOCK</span>
+                        <strong id="product-instock-count">0</strong>
+                        <small>Products available for sale</small>
+                    </div>
+                </article>
+
+                <article class="velora-product-stat">
+                    <div class="velora-stat-icon">!</div>
+                    <div>
+                        <span>LOW STOCK</span>
+                        <strong id="product-lowstock-count">0</strong>
+                        <small>Products needing attention</small>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- INVENTORY FORM -->
+            <section class="velora-product-form-panel" id="product-form-panel" hidden>
+
+                <div class="velora-form-heading">
+                    <div>
+                        <p class="velora-eyebrow">INVENTORY EDITOR</p>
+                        <h2 id="product-form-title">Add New Product</h2>
+                        <p>Enter the product details below.</p>
                     </div>
 
-                    <button type="button" id="show-product-form">
-                        + ADD NEW PRODUCT
+                    <button type="button" id="cancel-product-form" class="velora-form-close" aria-label="Close form">
+                        ×
                     </button>
-
                 </div>
 
-                <form id="admin-product-form" hidden>
-
-                    <h2 id="product-form-title">Add New Product</h2>
+                <form id="admin-product-form">
 
                     <input type="hidden" id="edit-product-id">
 
-                    <div class="admin-product-form-grid">
+                    <div class="velora-product-form-grid">
 
-                        <div>
-                            <label for="admin-product-name">Product Name</label>
+                        <div class="velora-form-field velora-field-full">
+                            <label for="admin-product-name">PRODUCT NAME *</label>
                             <input
                                 type="text"
                                 id="admin-product-name"
-                                placeholder="Enter product name"
+                                placeholder="Example: Elegant Satin Midi Dress"
+                                maxlength="100"
                                 required
                             >
                         </div>
 
-                        <div>
-                            <label for="admin-product-price">Price (₹)</label>
-                            <input
-                                type="number"
-                                id="admin-product-price"
-                                min="1"
-                                placeholder="Enter price"
-                                required
-                            >
-                        </div>
-
-                        <div>
-                            <label for="admin-product-category">Category</label>
+                        <div class="velora-form-field">
+                            <label for="admin-product-category">CATEGORY *</label>
                             <select id="admin-product-category" required>
-                                <option value="">Select Category</option>
-                                <option value="MEN">Men</option>
-                                <option value="WOMEN">Women</option>
-                                <option value="KIDS">Kids</option>
-                                <option value="MATERNITY">Maternity</option>
+                                <option value="">Loading categories...</option>
                             </select>
                         </div>
 
-                        <div>
-                            <label for="admin-product-material">Material</label>
+                        <div class="velora-form-field">
+                            <label for="admin-product-material">MATERIAL *</label>
                             <select id="admin-product-material" required>
                                 <option value="">Select Material</option>
                                 <option value="COTTON">Cotton</option>
@@ -136,37 +175,111 @@
                                 <option value="LINEN">Linen</option>
                                 <option value="SILK">Silk</option>
                                 <option value="POLYESTER">Polyester</option>
+                                <option value="SATIN">Satin</option>
+                                <option value="WOOL BLEND">Wool Blend</option>
+                                <option value="OTHER">Other</option>
                             </select>
                         </div>
 
-                        <div>
-                            <label for="admin-product-image">Product Image URL</label>
+                        <div class="velora-form-field">
+                            <label for="admin-product-price">SELLING PRICE (₹) *</label>
                             <input
-                                type="url"
-                                id="admin-product-image"
-                                placeholder="Paste image URL"
+                                type="number"
+                                id="admin-product-price"
+                                min="1"
+                                step="1"
+                                placeholder="1499"
                                 required
                             >
                         </div>
 
-                        <div>
-                            <label for="admin-product-delivery">Delivery Time</label>
+                        <div class="velora-form-field">
+                            <label for="admin-product-original-price">ORIGINAL PRICE (₹)</label>
+                            <input
+                                type="number"
+                                id="admin-product-original-price"
+                                min="1"
+                                step="1"
+                                placeholder="2499"
+                            >
+                        </div>
+
+                        <div class="velora-form-field">
+                            <label for="admin-product-stock">STOCK QUANTITY *</label>
+                            <input
+                                type="number"
+                                id="admin-product-stock"
+                                min="0"
+                                step="1"
+                                placeholder="25"
+                                required
+                            >
+                        </div>
+
+                        <div class="velora-form-field">
+                            <label for="admin-product-delivery">DELIVERY TIME *</label>
                             <select id="admin-product-delivery" required>
                                 <option value="2">2 Days</option>
-                                <option value="5">5 Days</option>
+                                <option value="5" selected>5 Days</option>
                                 <option value="7">7 Days</option>
                             </select>
                         </div>
 
+                        <div class="velora-form-field">
+                            <label for="admin-product-style">STYLE</label>
+                            <select id="admin-product-style">
+                                <option value="WESTERN">Western</option>
+                                <option value="ETHNIC">Ethnic</option>
+                            </select>
+                        </div>
+
+                        <div class="velora-form-field velora-field-full">
+                            <label for="admin-product-sizes">AVAILABLE SIZES</label>
+                            <input
+                                type="text"
+                                id="admin-product-sizes"
+                                placeholder="Example: S, M, L, XL, XXL"
+                            >
+                            <small>Separate sizes with commas.</small>
+                        </div>
+
+                        <div class="velora-form-field velora-field-full">
+                            <label for="admin-product-image">PRODUCT IMAGE URL</label>
+                            <input
+                                type="url"
+                                id="admin-product-image"
+                                placeholder="Paste an image URL or choose an image below"
+                            >
+                            <small>You can use an online image URL or upload a local image.</small>
+                        </div>
+
+                        <div class="velora-form-field velora-field-full">
+                            <label for="admin-product-image-file">UPLOAD PRODUCT IMAGE</label>
+                            <input
+                                type="file"
+                                id="admin-product-image-file"
+                                accept="image/png,image/jpeg,image/webp"
+                            >
+                            <small>Use JPG, PNG or WebP. For this browser demo, keep uploaded images reasonably small.</small>
+                        </div>
+
+                        <div class="velora-image-preview-area velora-field-full">
+                            <span>IMAGE PREVIEW</span>
+                            <div class="velora-image-preview-box">
+                                <img id="admin-product-image-preview" alt="Product image preview" hidden>
+                                <p id="admin-product-image-placeholder">Your product image will appear here</p>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="admin-product-form-buttons">
+                    <div class="velora-product-form-actions">
 
-                        <button type="submit" id="save-product-button">
+                        <button type="submit" id="save-product-button" class="velora-save-product-btn">
                             SAVE PRODUCT
                         </button>
 
-                        <button type="button" id="cancel-product-form">
+                        <button type="button" id="cancel-product-form-secondary" class="velora-cancel-product-btn">
                             CANCEL
                         </button>
 
@@ -174,35 +287,110 @@
 
                 </form>
 
-                <p id="admin-product-message"></p>
+            </section>
 
-                <div class="admin-products-table-wrapper">
+            <!-- FEEDBACK MESSAGE -->
+            <p id="admin-product-message" class="velora-product-message" role="status" aria-live="polite"></p>
 
-                    <table class="admin-products-table">
+            <!-- PRODUCT INVENTORY -->
+            <section class="velora-inventory-panel">
+
+                <div class="velora-inventory-heading">
+
+                    <div>
+                        <p class="velora-eyebrow">YOUR COLLECTION</p>
+                        <h2>All Products</h2>
+                        <p>Search, filter and manage your store inventory.</p>
+                    </div>
+
+                    <span class="velora-inventory-label">LIVE INVENTORY</span>
+
+                </div>
+
+                <!-- SEARCH AND FILTERS -->
+                <div class="velora-product-toolbar">
+
+                    <div class="velora-product-search">
+                        <span>⌕</span>
+                        <input
+                            type="search"
+                            id="product-search"
+                            placeholder="Search by product name..."
+                            aria-label="Search products"
+                        >
+                    </div>
+
+                    <select id="product-category-filter" aria-label="Filter by category">
+                        <option value="ALL">All Categories</option>
+                    </select>
+
+                    <select id="product-stock-filter" aria-label="Filter by stock">
+                        <option value="ALL">All Stock Status</option>
+                        <option value="IN_STOCK">In Stock</option>
+                        <option value="LOW_STOCK">Low Stock</option>
+                        <option value="OUT_OF_STOCK">Out of Stock</option>
+                    </select>
+
+                    <select id="product-sort-filter" aria-label="Sort products">
+                        <option value="newest">Newest First</option>
+                        <option value="name">Name: A to Z</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="stock-low">Stock: Low to High</option>
+                    </select>
+
+                </div>
+
+                <!-- TABLE -->
+                <div class="admin-products-table-wrapper velora-products-table-wrapper">
+
+                    <table class="admin-products-table velora-products-table">
 
                         <thead>
                             <tr>
                                 <th>PRODUCT</th>
                                 <th>CATEGORY</th>
                                 <th>PRICE</th>
-                                <th>MATERIAL</th>
+                                <th>STOCK</th>
+                                <th>STATUS</th>
                                 <th>ACTIONS</th>
                             </tr>
                         </thead>
 
-                        <tbody id="admin-products-list"></tbody>
+                        <tbody id="admin-products-list">
+                            <tr>
+                                <td colspan="6" class="velora-loading-cell">
+                                    Loading your collection...
+                                </td>
+                            </tr>
+                        </tbody>
 
                     </table>
 
                 </div>
 
+                <div id="product-empty-state" class="velora-product-empty-state" hidden>
+                    <div>♧</div>
+                    <h3>No products found</h3>
+                    <p>Try changing your search or filters, or add a new product.</p>
+                </div>
+
+                <div class="velora-inventory-footer">
+                    <span id="product-results-count">Your product inventory</span>
+                    <span>VÊLORA · INVENTORY MANAGEMENT</span>
+                </div>
+
             </section>
+
+            <p class="velora-inventory-note">
+                Inventory data is stored in this browser for the project demonstration.
+            </p>
 
         </main>
 
     </div>
-
-    <script src="../js/admin-products.js"></script>
-
+<script src="../js/admin-guard.js"></script>
+<script src="../js/categories.js"></script>
+<script src="../js/admin-products.js"></script>
 </body>
 </html>

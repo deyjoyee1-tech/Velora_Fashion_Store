@@ -88,65 +88,180 @@ document.addEventListener("DOMContentLoaded", function () {
             material: "COTTON",
             deliveryDays: 2,
             newest: 6,
-            image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=600"
+            image: "../images/kid1.jpg"
         },
         {
-            name: "Kids Casual Wear",
+            name: "Kids Traditional Sherwani",
             category: "KIDS",
             price: 699,
             originalPrice: 1099,
-            material: "COTTON",
+            material: "PREMIUM ETHNIC FABRIC",
             deliveryDays: 5,
             newest: 5,
-            image: "https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=600"
+            image: "../images/kid2.jpg"
         },
         {
-            name: "Kids Denim Style",
+            name: "Punjabi Lehenga",
             category: "KIDS",
             price: 899,
             originalPrice: 1399,
-            material: "DENIM",
+            material: "TRADITIONAL FABRIC",
             deliveryDays: 7,
             newest: 4,
-            image: "https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=600"
+            image: "../images/kid3.jpg"
         },
 
-        // MATERNITY COLLECTION
+        // NEW MATERNITY COLLECTION
 
         {
-            name: "Comfort Maternity Style",
+            name: "Maternity Everyday Dress",
             category: "MATERNITY",
             price: 1299,
             originalPrice: 1899,
-            material: "POLYESTER",
-            deliveryDays: 7,
-            newest: 3,
-            image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600"
+            material: "MATERNITY FABRIC",
+            deliveryDays: 3,
+            newest: 9,
+            image: "../images/maternity1.jpg",
+            sizes: ["S", "M", "L", "XL", "XXL"]
         },
         {
-            name: "Maternity Cotton Dress",
+            name: "Maternity Comfort Dress",
             category: "MATERNITY",
             price: 1599,
-            originalPrice: 2399,
-            material: "COTTON",
-            deliveryDays: 5,
-            newest: 2,
-            image: "https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?w=600"
+            originalPrice: 2299,
+            material: "MATERNITY FABRIC",
+            deliveryDays: 4,
+            newest: 8,
+            image: "../images/maternity2.jpg",
+            sizes: ["S", "M", "L", "XL", "XXL"]
         },
         {
-            name: "Elegant Maternity Wear",
+            name: "Maternity Elegant Dress",
             category: "MATERNITY",
             price: 1899,
             originalPrice: 2799,
-            material: "LINEN",
-            deliveryDays: 2,
-            newest: 1,
-            image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600"
+            material: "MATERNITY FABRIC",
+            deliveryDays: 5,
+            newest: 7,
+            image: "../images/maternity3.jpg",
+            sizes: ["S", "M", "L", "XL", "XXL"]
         }
     ];
 
 
     const availableSizes = ["XS", "S", "M", "L", "XL", "XXL"];
+
+    // OLD MATERNITY PRODUCTS TO EXCLUDE
+
+    const retiredMaternityProductNames = [
+        "Comfort Maternity Style",
+        "Maternity Cotton Dress",
+        "Elegant Maternity Wear"
+    ];
+
+
+    // =====================================
+    // LOAD CUSTOMER CATEGORIES FROM ADMIN
+    // =====================================
+
+    const defaultCategoryNames = ["MEN", "WOMEN", "KIDS", "MATERNITY"];
+
+    function getCustomerCategoryEntries() {
+
+        let savedCategories = [];
+
+        try {
+            const saved = JSON.parse(
+                localStorage.getItem("veloraCategories")
+            );
+
+            if (Array.isArray(saved)) {
+                savedCategories = saved
+                    .map(function (item) {
+                        return typeof item === "string"
+                            ? item.trim()
+                            : String(item.name || item.category || "").trim();
+                    })
+                    .filter(Boolean);
+            }
+
+        } catch (error) {
+            console.error("Could not load customer categories:", error);
+        }
+
+        if (savedCategories.length === 0) {
+            savedCategories = ["Men", "Women", "Kids", "Maternity"];
+        }
+
+        const normalizedNames = savedCategories.map(function (name) {
+            return name.toUpperCase();
+        });
+
+        const missingDefaults = defaultCategoryNames.filter(function (name) {
+            return !normalizedNames.includes(name);
+        });
+
+        const renamedNames = savedCategories.filter(function (name) {
+            return !defaultCategoryNames.includes(name.toUpperCase());
+        });
+
+        return savedCategories.map(function (name) {
+
+            const normalized = name.toUpperCase();
+
+            if (defaultCategoryNames.includes(normalized)) {
+                return {
+                    label: name,
+                    key: normalized
+                };
+            }
+
+            const renamedIndex = renamedNames.findIndex(function (item) {
+                return item === name;
+            });
+
+            const matchingDefault = missingDefaults[renamedIndex];
+
+            return {
+                label: name,
+                key: matchingDefault || normalized
+            };
+        });
+    }
+
+    const customerCategoryEntries = getCustomerCategoryEntries();
+
+
+    // CREATE CUSTOMER NAVIGATION LINKS
+
+    function renderCustomerCategoryNavigation() {
+
+        const navigation = document.getElementById(
+            "customer-category-links"
+        );
+
+        if (!navigation) return;
+
+        navigation.innerHTML = `
+            <a href="../index.html">HOME</a>
+            <a href="categories.html?category=ALL">SHOP</a>
+        `;
+
+        customerCategoryEntries.forEach(function (category) {
+
+            const link = document.createElement("a");
+
+            link.textContent = category.label.toUpperCase();
+
+            link.href =
+                "categories.html?category=" +
+                encodeURIComponent(category.label);
+
+            navigation.appendChild(link);
+        });
+    }
+
+    renderCustomerCategoryNavigation();
 
 
     // =====================================
@@ -226,10 +341,35 @@ document.addEventListener("DOMContentLoaded", function () {
         return getAdminProducts()
             .filter(function (product) {
 
-                return product &&
-                    product.name &&
-                    Number(product.price) > 0 &&
-                    product.category;
+                if (
+                    !product ||
+                    !product.name ||
+                    Number(product.price) <= 0 ||
+                    !product.category
+                ) {
+                    return false;
+                }
+
+                const category = String(product.category)
+                    .trim()
+                    .toUpperCase();
+
+                const name = String(product.name)
+                    .trim()
+                    .toLowerCase();
+
+                // Exclude the three retired Maternity products.
+
+                if (
+                    category === "MATERNITY" &&
+                    retiredMaternityProductNames.some(function (oldName) {
+                        return oldName.toLowerCase() === name;
+                    })
+                ) {
+                    return false;
+                }
+
+                return true;
 
             })
             .map(function (product, index) {
@@ -281,9 +421,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
-        return combinedProducts;
-    }
+      return combinedProducts;
 
+}
+
+// Make the complete product catalogue available to VÊLORA AI.
+window.veloraGetAllProducts = getAllProducts;
 
     // =====================================
     // PAGE ELEMENTS AND URL PARAMETERS
@@ -291,21 +434,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const params = new URLSearchParams(window.location.search);
 
-    const validCategories = [
-        "ALL", "MEN", "WOMEN", "KIDS", "MATERNITY"
-    ];
-
     const requestedCategory = (
         params.get("category") || "ALL"
-    ).trim().toUpperCase();
+    ).trim();
 
-    let currentCategory = validCategories.includes(requestedCategory)
-        ? requestedCategory
-        : "ALL";
+    const selectedCategoryEntry = customerCategoryEntries.find(
+        function (category) {
+            return category.label.toUpperCase() ===
+                requestedCategory.toUpperCase();
+        }
+    );
 
-    // NEW: READ SEARCH TERM FROM HOMEPAGE
+    let currentCategory = requestedCategory.toUpperCase() === "ALL"
+        ? "ALL"
+        : selectedCategoryEntry
+            ? selectedCategoryEntry.key
+            : "ALL";
+
+    let currentCategoryLabel = selectedCategoryEntry
+        ? selectedCategoryEntry.label.toUpperCase()
+        : currentCategory;
+
     const searchTerm = (params.get("search") || "").trim();
-
     const normalizedSearch = searchTerm.toLowerCase();
 
     const heading = document.getElementById("category-heading");
@@ -442,7 +592,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             heading.textContent = currentCategory === "ALL"
                 ? "NEW ARRIVALS"
-                : currentCategory + " COLLECTION";
+                : currentCategoryLabel + " COLLECTION";
         }
     }
 
@@ -454,8 +604,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function displayProducts() {
 
         const products = getAllProducts().map(function (product) {
-
-            // Keep Classic Party Dress consistent
 
             if (
                 String(product.name).toLowerCase() === "classic party dress" &&
@@ -510,7 +658,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const matchesCategory =
                 currentCategory === "ALL" ||
-                product.category === currentCategory;
+                String(product.category).trim().toUpperCase() === currentCategory ||
+                String(product.category).trim().toUpperCase() === currentCategoryLabel;
 
             const matchesPrice =
                 product.price >= minimum &&
@@ -532,8 +681,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 selectedSize === "ALL" ||
                 getProductSizes(product).includes(selectedSize);
 
-
-            // NEW: SEARCH PRODUCT NAME, CATEGORY AND MATERIAL
             const searchableText = [
                 product.name,
                 product.category,
@@ -602,7 +749,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const card = document.createElement("div");
             card.className = "product-card";
-
 
             // PRODUCT IMAGE
 

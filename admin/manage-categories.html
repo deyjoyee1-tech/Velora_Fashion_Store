@@ -1,18 +1,24 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Manage Categories | VÊLORA</title>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="admin-page">
 
     <header class="admin-header">
-
         <div class="admin-logo">
             VÊLORA
             <span>ADMIN PANEL</span>
@@ -22,138 +28,171 @@
             <span>Welcome, Admin</span>
             <a href="login.html" class="admin-logout">LOG OUT</a>
         </div>
-
     </header>
 
     <div class="admin-container">
 
         <aside class="admin-sidebar">
-
             <h3>MAIN MENU</h3>
 
-            <a href="dashboard.html">
-                <span>▦</span> Dashboard
-            </a>
-
-            <a href="manage-categories.html" class="active">
-                <span>▤</span> Manage Categories
-            </a>
-
-            <a href="manage-products.html">
-                <span>♧</span> Manage Products
-            </a>
-
-            <a href="manage-orders.html">
-                <span>☷</span> Customer Orders
-            </a>
-
-            <a href="delivery.html">
-                <span>➜</span> Delivery Management
-            </a>
+            <a href="dashboard.html"><span>▦</span> Dashboard</a>
+            <a href="manage-categories.html" class="active"><span>▤</span> Manage Categories</a>
+            <a href="manage-products.html"><span>♧</span> Manage Products</a>
+            <a href="manage-orders.html"><span>☷</span> Customer Orders</a>
+            <a href="delivery.html"><span>➜</span> Delivery Management</a>
 
             <div class="sidebar-bottom">
                 <a href="../index.html">VIEW CUSTOMER STORE</a>
-                <a href="login.html">LOG OUT</a>
+                <a href="login.html" class="admin-logout">LOG OUT</a>
             </div>
-
         </aside>
 
-        <main class="admin-main">
+        <main class="admin-main velora-category-main">
 
-            <div class="admin-page-heading">
+            <!-- PAGE INTRO -->
+            <section class="admin-page-heading velora-category-heading">
                 <div>
-                    <p>VÊLORA MANAGEMENT SYSTEM</p>
+                    <p>STORE COLLECTION MANAGEMENT</p>
                     <h1>Manage Categories</h1>
                     <span>
-                        Organise the clothing categories available in your store.
+                        Organise your collections and keep your VÊLORA store beautifully structured.
                     </span>
                 </div>
-            </div>
 
-            <section class="category-admin-card">
+                <button type="button" id="show-category-form"
+                    class="velora-add-category-btn">
+                    <span>＋</span> Add New Category
+                </button>
+            </section>
 
-                <div class="category-admin-heading">
+            <!-- CATEGORY OVERVIEW -->
+            <section class="velora-category-overview">
 
+                <div class="velora-category-overview-card">
+                    <span class="velora-overview-icon">▤</span>
                     <div>
-                        <h2>Store Categories</h2>
-                        <p>Manage the clothing sections of your store.</p>
+                        <p>TOTAL CATEGORIES</p>
+                        <h2 id="category-total-count">0</h2>
                     </div>
-
-                    <button type="button" id="show-category-form">
-                        + ADD NEW CATEGORY
-                    </button>
-
                 </div>
 
-                <form id="category-form" hidden>
-
-                    <h3>Add a New Category</h3>
-
-                    <label for="new-category">Category Name</label>
-
-                    <input
-                        type="text"
-                        id="new-category"
-                        placeholder="Enter category name"
-                        required
-                    >
-
-                    <div class="category-form-buttons">
-
-                        <button type="submit">SAVE CATEGORY</button>
-
-                        <button type="button" id="cancel-category">
-                            CANCEL
-                        </button>
-
+                <div class="velora-category-overview-card">
+                    <span class="velora-overview-icon sage">♧</span>
+                    <div>
+                        <p>TOTAL PRODUCTS</p>
+                        <h2 id="category-total-products">0</h2>
                     </div>
+                </div>
 
-                </form>
-
-                <p id="category-message"></p>
-
-                <div id="admin-category-list" class="admin-category-list">
-
-                    <div class="admin-category-item">
-                        <div>
-                            <h3>Men</h3>
-                            <p>Clothing for men</p>
-                        </div>
-                        <span>ACTIVE</span>
+                <div class="velora-category-overview-card">
+                    <span class="velora-overview-icon lavender">✧</span>
+                    <div>
+                        <p>ACTIVE COLLECTIONS</p>
+                        <h2 id="category-active-count">0</h2>
                     </div>
-
-                    <div class="admin-category-item">
-                        <div>
-                            <h3>Women</h3>
-                            <p>Clothing for women</p>
-                        </div>
-                        <span>ACTIVE</span>
-                    </div>
-
-                    <div class="admin-category-item">
-                        <div>
-                            <h3>Kids</h3>
-                            <p>Clothing for kids</p>
-                        </div>
-                        <span>ACTIVE</span>
-                    </div>
-
-                    <div class="admin-category-item">
-                        <div>
-                            <h3>Maternity</h3>
-                            <p>Maternity clothing</p>
-                        </div>
-                        <span>ACTIVE</span>
-                    </div>
-
                 </div>
 
             </section>
+
+            <!-- ADD / EDIT CATEGORY FORM -->
+            <section class="velora-category-form-panel" id="category-form-panel" hidden>
+
+                <div class="velora-category-form-heading">
+                    <div>
+                        <p>CATEGORY DETAILS</p>
+                        <h2 id="category-form-title">Create a New Category</h2>
+                    </div>
+
+                    <button type="button" id="cancel-category"
+                        class="velora-form-close" aria-label="Close form">
+                        ×
+                    </button>
+                </div>
+
+                <form id="category-form">
+
+                    <div class="velora-category-input-group">
+                        <label for="new-category">Category Name</label>
+
+                        <input
+                            type="text"
+                            id="new-category"
+                            name="category"
+                            placeholder="e.g. Accessories"
+                            maxlength="35"
+                            autocomplete="off"
+                            required
+                        >
+
+                        <small>
+                            Use a clear name for your customer-facing collection.
+                        </small>
+                    </div>
+
+                    <div class="velora-category-form-actions">
+                        <button type="button" id="cancel-category-secondary"
+                            class="velora-category-cancel-btn">
+                            Cancel
+                        </button>
+
+                        <button type="submit" id="save-category-btn"
+                            class="velora-category-save-btn">
+                            Save Category
+                        </button>
+                    </div>
+
+                    <p id="category-message" class="velora-category-message"
+                        role="status" aria-live="polite"></p>
+
+                </form>
+
+            </section>
+
+            <!-- CATEGORY LIST -->
+            <section class="velora-category-section">
+
+                <div class="velora-category-list-heading">
+                    <div>
+                        <h2>Your Collections</h2>
+                        <p>Manage the categories displayed in your online store.</p>
+                    </div>
+
+                    <div class="velora-category-search">
+                        <span>⌕</span>
+                        <input
+                            type="search"
+                            id="category-search"
+                            placeholder="Search categories..."
+                            aria-label="Search categories"
+                        >
+                    </div>
+                </div>
+
+                <div id="admin-category-list" class="velora-category-grid">
+
+                    <div class="velora-category-loading">
+                        Loading your collections...
+                    </div>
+
+                </div>
+
+                <div id="category-empty-state" class="velora-category-empty" hidden>
+                    <span>⌕</span>
+                    <h3>No categories found</h3>
+                    <p>Try another search or create a new category.</p>
+                </div>
+
+            </section>
+
+            <footer class="admin-dashboard-footer">
+                VÊLORA STORE MANAGEMENT SYSTEM · © 2026
+            </footer>
 
         </main>
 
     </div>
 
+    <script src="../js/admin-guard.js"></script>
     <script src="../js/admin-categories.js"></script>
 
 </body>

@@ -10,6 +10,10 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="admin-page">
@@ -62,7 +66,7 @@
                     VIEW CUSTOMER STORE
                 </a>
 
-                <a href="login.html">
+                <a href="login.html" class="admin-logout">
                     LOG OUT
                 </a>
 
@@ -83,7 +87,7 @@
 
                     <span>
                         Welcome to your store overview.
-                        Monitor products, orders and daily activities.
+                        Monitor products, orders and store performance.
                     </span>
                 </div>
 
@@ -107,7 +111,7 @@
                 <div class="admin-stat-card">
                     <span>TOTAL ORDERS</span>
                     <h2 id="dashboard-total-orders">0</h2>
-                    <p>Customer orders</p>
+                    <p>Customer purchases</p>
                 </div>
 
                 <div class="admin-stat-card">
@@ -117,12 +121,99 @@
                 </div>
 
                 <div class="admin-stat-card">
+                    <span>DELIVERED ORDERS</span>
+                    <h2 id="dashboard-delivered-orders">0</h2>
+                    <p>Successfully delivered</p>
+                </div>
+
+                <div class="admin-stat-card">
                     <span>TOTAL REVENUE</span>
                     <h2 id="dashboard-total-revenue">₹0</h2>
                     <p>Value of placed orders</p>
                 </div>
 
             </section>
+
+            <!-- SALES ANALYTICS -->
+            <section class="admin-analytics">
+
+                <div class="admin-section-heading">
+                    <div>
+                        <h2>SALES ANALYTICS</h2>
+                        <p class="admin-dashboard-description">
+                            Review your store's monthly sales and order activity.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="admin-analytics-summary">
+
+                    <div class="admin-analytics-card">
+                        <span>RECENT SALES</span>
+                        <h3 id="analytics-revenue">₹0</h3>
+                        <p>Revenue over the displayed period</p>
+                    </div>
+
+                    <div class="admin-analytics-card">
+                        <span>RECENT ORDERS</span>
+                        <h3 id="analytics-orders">0</h3>
+                        <p>Orders over the displayed period</p>
+                    </div>
+
+                </div>
+
+                <div class="admin-chart-section">
+
+                    <div class="admin-chart-heading">
+                        <h3>MONTHLY PERFORMANCE</h3>
+                        <span>Last 6 months</span>
+                    </div>
+
+                    <div
+                        id="monthly-sales-chart"
+                        class="admin-sales-chart"
+                        aria-label="Monthly sales and order performance chart"
+                    >
+                        <p>Loading sales analytics...</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+<!-- ORDER STATUS OVERVIEW -->
+<section class="admin-order-overview">
+
+    <div class="admin-section-heading">
+        <div>
+            <h2>ORDER STATUS OVERVIEW</h2>
+            <p class="admin-dashboard-description">
+                A visual breakdown of your store orders.
+            </p>
+        </div>
+    </div>
+
+    <div class="velora-order-chart-layout">
+
+        <div class="velora-chart-wrapper">
+            <div id="order-status-chart"
+                 class="velora-doughnut-chart">
+                <div class="velora-doughnut-center">
+                    <strong>0</strong>
+                    <span>TOTAL ORDERS</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="order-status-legend"
+             class="velora-chart-legend">
+        </div>
+
+    </div>
+
+</section>
+
 
             <!-- QUICK ACTIONS -->
             <section class="admin-quick-actions">
@@ -233,7 +324,11 @@
 
     </div>
 
-    <script src="../js/admin-dashboard.js"></script>
+    <!-- ADMIN ACCESS CHECK -->
+    <script src="../js/admin-guard.js"></script>
 
+    <!-- DASHBOARD DATA AND ANALYTICS -->
+   <script src="../js/admin-dashboard.js"></script>
+<script src="../js/admin-analytics.js"></script>
 </body>
 </html>

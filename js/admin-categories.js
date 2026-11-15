@@ -1,561 +1,592 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ORIGINAL CUSTOMER PRODUCTS
-    const defaultProducts = [
-        {
-            name: "Classic Casual Shirt",
-            category: "MEN",
-            price: 799,
-            material: "COTTON",
-            deliveryDays: 2,
-            newest: 12,
-            image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600"
-        },
-        {
-            name: "Premium Denim Jacket",
-            category: "MEN",
-            price: 1499,
-            material: "DENIM",
-            deliveryDays: 5,
-            newest: 11,
-            image: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=600"
-        },
-        {
-            name: "Linen Casual Shirt",
-            category: "MEN",
-            price: 1099,
-            material: "LINEN",
-            deliveryDays: 7,
-            newest: 10,
-            image: "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=600"
-        },
-        {
-            name: "Elegant Everyday Outfit",
-            category: "WOMEN",
-            price: 999,
-            material: "LINEN",
-            deliveryDays: 5,
-            newest: 9,
-            image: "https://images.unsplash.com/photo-1583391733956-6c78276477e9?w=600"
-        },
-        {
-            name: "Floral Summer Dress",
-            category: "WOMEN",
-            price: 1499,
-            material: "POLYESTER",
-            deliveryDays: 2,
-            newest: 8,
-            image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600"
-        },
-        {
-            name: "Classic Party Dress",
-            category: "WOMEN",
-            price: 1999,
-            material: "SILK",
-            deliveryDays: 7,
-            newest: 7,
-            image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600"
-        },
-        {
-            name: "Little Trendsetter Outfit",
-            category: "KIDS",
-            price: 499,
-            material: "COTTON",
-            deliveryDays: 2,
-            newest: 6,
-            image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=600"
-        },
-        {
-            name: "Kids Casual Wear",
-            category: "KIDS",
-            price: 699,
-            material: "COTTON",
-            deliveryDays: 5,
-            newest: 5,
-            image: "https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=600"
-        },
-        {
-            name: "Kids Denim Style",
-            category: "KIDS",
-            price: 899,
-            material: "DENIM",
-            deliveryDays: 7,
-            newest: 4,
-            image: "https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=600"
-        },
-        {
-            name: "Comfort Maternity Style",
-            category: "MATERNITY",
-            price: 1299,
-            material: "POLYESTER",
-            deliveryDays: 7,
-            newest: 3,
-            image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600"
-        },
-        {
-            name: "Maternity Cotton Dress",
-            category: "MATERNITY",
-            price: 1599,
-            material: "COTTON",
-            deliveryDays: 5,
-            newest: 2,
-            image: "https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?w=600"
-        },
-        {
-            name: "Elegant Maternity Wear",
-            category: "MATERNITY",
-            price: 1899,
-            material: "LINEN",
-            deliveryDays: 2,
-            newest: 1,
-            image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600"
-        }
+    // =========================================
+    // VÊLORA CATEGORY MANAGEMENT
+    // =========================================
+
+    const STORAGE_KEY = "veloraCategories";
+    const PRODUCTS_KEY = "veloraProducts";
+
+    const categoryForm = document.getElementById("category-form");
+    const formPanel = document.getElementById("category-form-panel");
+    const categoryInput = document.getElementById("new-category");
+    const categoryList = document.getElementById("admin-category-list");
+    const searchInput = document.getElementById("category-search");
+    const message = document.getElementById("category-message");
+
+    const totalCount = document.getElementById("category-total-count");
+    const totalProducts = document.getElementById("category-total-products");
+    const activeCount = document.getElementById("category-active-count");
+
+    const showFormButton = document.getElementById("show-category-form");
+    const cancelButton = document.getElementById("cancel-category");
+    const cancelSecondary = document.getElementById("cancel-category-secondary");
+
+    const formTitle = document.getElementById("category-form-title");
+    const saveButton = document.getElementById("save-category-btn");
+    const emptyState = document.getElementById("category-empty-state");
+
+    if (!categoryForm || !categoryList) return;
+
+    const DEFAULT_CATEGORIES = [
+        "Men",
+        "Women",
+        "Kids",
+        "Maternity"
     ];
 
-    // LOAD ADMIN CATEGORIES
-    function getAvailableCategories() {
+    let categories = [];
+    let products = [];
+    let editingCategory = null;
 
-        const defaultCategories = [
-            "Men",
-            "Women",
-            "Kids",
-            "Maternity"
-        ];
+    // =========================================
+    // SAFE STORAGE FUNCTIONS
+    // =========================================
 
-        try {
-
-            const saved = JSON.parse(
-                localStorage.getItem("veloraCategories")
-            );
-
-            const categories = Array.isArray(saved)
-                ? saved
-                : defaultCategories;
-
-            const cleanedCategories = categories
-                .filter(function (category) {
-                    return typeof category === "string";
-                })
-                .map(function (category) {
-                    return category.trim().toUpperCase();
-                })
-                .filter(function (category) {
-                    return category !== "";
-                });
-
-            return [
-                "ALL",
-                ...new Set(cleanedCategories)
-            ];
-
-        } catch (error) {
-
-            return [
-                "ALL",
-                "MEN",
-                "WOMEN",
-                "KIDS",
-                "MATERNITY"
-            ];
-
-        }
-
-    }
-
-    // LOAD ADMIN PRODUCTS
-    function getAdminProducts() {
+    function readStorage(key) {
 
         try {
+            const saved = localStorage.getItem(key);
 
-            const saved = JSON.parse(
-                localStorage.getItem("veloraProducts")
-            );
+            if (!saved) return [];
 
-            return Array.isArray(saved) ? saved : [];
+            const parsed = JSON.parse(saved);
+
+            return Array.isArray(parsed) ? parsed : [];
 
         } catch (error) {
-
-            console.error("Could not load admin products:", error);
+            console.error("Storage error:", key, error);
             return [];
-
         }
-
     }
 
-    // CONVERT ADMIN PRODUCTS
-    function prepareAdminProducts() {
-
-        return getAdminProducts()
-            .filter(function (product) {
-
-                return product &&
-                    product.name &&
-                    Number(product.price) > 0 &&
-                    product.category;
-
-            })
-            .map(function (product, index) {
-
-                return {
-                    id: product.id || "ADMIN-" + index,
-                    name: String(product.name).trim(),
-                    category: String(product.category).trim().toUpperCase(),
-                    price: Number(product.price),
-                    material: String(product.material || "OTHER").trim().toUpperCase(),
-                    deliveryDays: Math.max(
-                        1,
-                        Number(product.deliveryDays) || 5
-                    ),
-                    newest: 1000 + index,
-                    image: product.image || ""
-                };
-
-            });
-
-    }
-
-    // COMBINE ADMIN AND ORIGINAL PRODUCTS
-    function getAllProducts() {
-
-        const adminProducts = prepareAdminProducts();
-
-        const combinedProducts = [...adminProducts];
-
-        defaultProducts.forEach(function (defaultProduct) {
-
-            const alreadyExists = adminProducts.some(function (adminProduct) {
-
-                return adminProduct.name.toLowerCase() ===
-                    defaultProduct.name.toLowerCase() &&
-                    adminProduct.category === defaultProduct.category;
-
-            });
-
-            if (!alreadyExists) {
-                combinedProducts.push(defaultProduct);
-            }
-
-        });
-
-        return combinedProducts;
-
-    }
-
-    // PAGE ELEMENTS
-    const params = new URLSearchParams(window.location.search);
-
-    const validCategories = getAvailableCategories();
-
-    const requestedCategory = (
-        params.get("category") || "ALL"
-    ).trim().toUpperCase();
-
-    let currentCategory = validCategories.includes(requestedCategory)
-        ? requestedCategory
-        : "ALL";
-
-    const heading = document.getElementById("category-heading");
-    const container = document.getElementById("category-products");
-    const noProducts = document.getElementById("no-products");
-    const productCount = document.getElementById("product-count");
-
-    const minPrice = document.getElementById("min-price");
-    const maxPrice = document.getElementById("max-price");
-    const materialFilter = document.getElementById("filter-material");
-    const deliveryFilter = document.getElementById("filter-delivery");
-    const sortFilter = document.getElementById("sort-products");
-    const clearButton = document.getElementById("clear-filters");
-
-    if (!heading || !container || !noProducts || !productCount) {
-        return;
-    }
-
-    // LOAD WISHLIST
-    function getWishlist() {
+    function saveCategories() {
 
         try {
-
-            const saved = JSON.parse(
-                localStorage.getItem("veloraWishlist")
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(categories)
             );
 
-            return Array.isArray(saved) ? saved : [];
+            return true;
 
         } catch (error) {
+            console.error("Could not save categories:", error);
+            showMessage("Unable to save. Please check your browser storage.", "error");
+            return false;
+        }
+    }
 
-            return [];
+    function saveProducts() {
 
+        try {
+            localStorage.setItem(
+                PRODUCTS_KEY,
+                JSON.stringify(products)
+            );
+
+            return true;
+
+        } catch (error) {
+            console.error("Could not save products:", error);
+            showMessage("Category renamed, but product updates could not be saved.", "error");
+            return false;
+        }
+    }
+
+    // =========================================
+    // LOAD DATA
+    // =========================================
+
+    function normalizeCategory(item) {
+
+        if (typeof item === "string") {
+            return item.trim();
+        }
+
+        if (item && typeof item === "object") {
+            return String(item.name || item.category || "").trim();
+        }
+
+        return "";
+    }
+
+    function loadData() {
+
+        const savedCategories = readStorage(STORAGE_KEY);
+
+        categories = savedCategories
+            .map(normalizeCategory)
+            .filter(Boolean);
+
+        if (categories.length === 0) {
+            categories = [...DEFAULT_CATEGORIES];
+            saveCategories();
+        }
+
+        // Remove duplicate names
+        categories = categories.filter(function (category, index) {
+            return categories.findIndex(function (item) {
+                return item.toLowerCase() === category.toLowerCase();
+            }) === index;
+        });
+
+        products = readStorage(PRODUCTS_KEY);
+
+        saveCategories();
+    }
+
+    // =========================================
+    // CATEGORY HELPERS
+    // =========================================
+
+    function escapeHTML(value) {
+
+        return String(value).replace(/[&<>"']/g, function (character) {
+            const entities = {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            };
+
+            return entities[character];
+        });
+    }
+
+    function getCategoryIcon(category) {
+
+        const name = category.toLowerCase();
+
+        if (name.includes("women")) return "✧";
+        if (name.includes("men")) return "◇";
+        if (name.includes("kid")) return "♧";
+        if (name.includes("maternity")) return "♡";
+        if (name.includes("accessor")) return "✦";
+        if (name.includes("footwear") || name.includes("shoe")) return "⌁";
+        if (name.includes("beauty")) return "❀";
+
+        return "✧";
+    }
+
+    function getCategoryClass(index) {
+        return [
+            "category-tone-gold",
+            "category-tone-sage",
+            "category-tone-lavender",
+            "category-tone-rose",
+            "category-tone-blue"
+        ][index % 5];
+    }
+
+    function getProductCount(category) {
+
+        return products.filter(function (product) {
+
+            return String(product.category || "").trim().toLowerCase()
+                === category.trim().toLowerCase();
+
+        }).length;
+    }
+
+    function showMessage(text, type) {
+
+        if (!message) return;
+
+        message.textContent = text;
+        message.className = "velora-category-message " + (type || "");
+
+    }
+
+    function clearMessage() {
+
+        if (!message) return;
+
+        message.textContent = "";
+        message.className = "velora-category-message";
+
+    }
+
+    // =========================================
+    // UPDATE OVERVIEW
+    // =========================================
+
+    function updateOverview() {
+
+        if (totalCount) {
+            totalCount.textContent = categories.length;
+        }
+
+        if (activeCount) {
+            activeCount.textContent = categories.length;
+        }
+
+        if (totalProducts) {
+            totalProducts.textContent = products.length;
         }
 
     }
 
-    // CHECK WISHLIST
-    function isInWishlist(productName, wishlist) {
+    // =========================================
+    // RENDER CATEGORY CARDS
+    // =========================================
 
-        return wishlist.some(function (item) {
+    function renderCategories() {
 
-            if (typeof item === "string") {
-                return item === productName;
+        const searchTerm = searchInput
+            ? searchInput.value.trim().toLowerCase()
+            : "";
+
+        const filteredCategories = categories.filter(function (category) {
+            return category.toLowerCase().includes(searchTerm);
+        });
+
+        categoryList.innerHTML = "";
+
+        if (filteredCategories.length === 0) {
+
+            if (emptyState) {
+                emptyState.hidden = false;
             }
 
-            return item &&
-                (item.productName === productName ||
-                    item.name === productName);
+            updateOverview();
+            return;
+        }
+
+        if (emptyState) {
+            emptyState.hidden = true;
+        }
+
+        filteredCategories.forEach(function (category) {
+
+            const originalIndex = categories.findIndex(function (item) {
+                return item.toLowerCase() === category.toLowerCase();
+            });
+
+            const productCount = getCategoryCount(category);
+
+            const card = document.createElement("article");
+
+            card.className =
+                "velora-category-card " + getCategoryClass(originalIndex);
+
+            card.innerHTML = `
+                <div class="velora-category-card-top">
+
+                    <div class="velora-category-icon">
+                        ${getCategoryIcon(category)}
+                    </div>
+
+                    <span class="velora-category-number">
+                        COLLECTION ${String(originalIndex + 1).padStart(2, "0")}
+                    </span>
+
+                </div>
+
+                <div class="velora-category-card-content">
+
+                    <h3>${escapeHTML(category)}</h3>
+
+                    <p>
+                        ${productCount}
+                        ${productCount === 1 ? "product" : "products"}
+                        in this collection
+                    </p>
+
+                </div>
+
+                <div class="velora-category-card-actions">
+
+                    <button
+                        type="button"
+                        class="velora-edit-category"
+                        data-category="${escapeHTML(category)}">
+                        EDIT CATEGORY
+                    </button>
+
+                    <button
+                        type="button"
+                        class="velora-delete-category"
+                        data-category="${escapeHTML(category)}"
+                        aria-label="Delete ${escapeHTML(category)}">
+                        DELETE
+                    </button>
+
+                </div>
+            `;
+
+            categoryList.appendChild(card);
 
         });
 
-    }
-
-    // UPDATE PAGE HEADING
-    function updateHeading() {
-
-        heading.textContent = currentCategory === "ALL"
-            ? "NEW ARRIVALS"
-            : currentCategory + " COLLECTION";
+        updateOverview();
 
     }
 
-    // DISPLAY PRODUCTS
-    function displayProducts() {
+    function getCategoryCount(category) {
+        return getProductCount(category);
+    }
 
-        const products = getAllProducts();
+    // =========================================
+    // OPEN AND CLOSE FORM
+    // =========================================
 
-        const minimum = minPrice && minPrice.value !== ""
-            ? Math.max(0, Number(minPrice.value))
-            : 0;
+    function openForm(category) {
 
-        const maximum = maxPrice && maxPrice.value !== ""
-            ? Number(maxPrice.value)
-            : Infinity;
+        editingCategory = category || null;
 
-        const selectedMaterial = materialFilter
-            ? materialFilter.value
-            : "ALL";
+        categoryForm.reset();
+        clearMessage();
 
-        const selectedDelivery = deliveryFilter
-            ? deliveryFilter.value
-            : "ALL";
+        if (editingCategory) {
 
-        // FILTER PRODUCTS
-        let filteredProducts = products.filter(function (product) {
+            categoryInput.value = editingCategory;
 
-            const matchesCategory =
-                currentCategory === "ALL" ||
-                product.category === currentCategory;
+            if (formTitle) {
+                formTitle.textContent = "Edit Category";
+            }
 
-            const matchesPrice =
-                product.price >= minimum &&
-                product.price <= maximum;
+            if (saveButton) {
+                saveButton.textContent = "Update Category";
+            }
 
-            const matchesMaterial =
-                selectedMaterial === "ALL" ||
-                product.material === selectedMaterial;
+        } else {
 
-            const matchesDelivery =
-                selectedDelivery === "ALL" ||
-                product.deliveryDays <= Number(selectedDelivery);
+            if (formTitle) {
+                formTitle.textContent = "Create a New Category";
+            }
 
-            return matchesCategory &&
-                matchesPrice &&
-                matchesMaterial &&
-                matchesDelivery;
-
-        });
-
-        // SORT PRODUCTS
-        if (sortFilter && sortFilter.value === "low-high") {
-
-            filteredProducts.sort(function (a, b) {
-                return a.price - b.price;
-            });
-
-        } else if (sortFilter && sortFilter.value === "high-low") {
-
-            filteredProducts.sort(function (a, b) {
-                return b.price - a.price;
-            });
-
-        } else if (sortFilter && sortFilter.value === "newest") {
-
-            filteredProducts.sort(function (a, b) {
-                return b.newest - a.newest;
-            });
+            if (saveButton) {
+                saveButton.textContent = "Save Category";
+            }
 
         }
 
-        // UPDATE PRODUCT COUNT
-        productCount.textContent =
-            "Showing " + filteredProducts.length + " products";
+        formPanel.hidden = false;
 
-        container.innerHTML = "";
+        formPanel.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
 
-        noProducts.hidden = filteredProducts.length !== 0;
+        setTimeout(function () {
+            categoryInput.focus();
+        }, 150);
 
-        const wishlist = getWishlist();
+    }
 
-        // CREATE PRODUCT CARDS
-        filteredProducts.forEach(function (product) {
+    function closeForm() {
 
-            const card = document.createElement("div");
-            card.className = "product-card";
+        formPanel.hidden = true;
+        categoryForm.reset();
 
-            // PRODUCT IMAGE
-            const imageBox = document.createElement("div");
-            imageBox.className = "product-image";
+        editingCategory = null;
+        clearMessage();
 
-            const image = document.createElement("img");
+    }
 
-            image.src = product.image ||
-                "https://placehold.co/600x750/f5f0e9/8b684d?text=VELORA";
+    // =========================================
+    // ADD / EDIT CATEGORY
+    // =========================================
 
-            image.alt = product.name;
-            image.loading = "lazy";
+    categoryForm.addEventListener("submit", function (event) {
 
-            image.addEventListener("error", function () {
+        event.preventDefault();
 
-                image.src =
-                    "https://placehold.co/600x750/f5f0e9/8b684d?text=VELORA";
+        const newName = categoryInput.value.trim();
 
-            }, { once: true });
+        clearMessage();
 
-            // WISHLIST BUTTON
-            const heart = document.createElement("button");
+        if (!newName) {
+            showMessage("Please enter a category name.", "error");
+            categoryInput.focus();
+            return;
+        }
 
-            heart.className = "wishlist-heart";
-            heart.type = "button";
+        if (newName.length < 2) {
+            showMessage("Category name must contain at least 2 characters.", "error");
+            categoryInput.focus();
+            return;
+        }
 
-            const alreadyWishlisted = isInWishlist(
-                product.name,
-                wishlist
-            );
+        const duplicate = categories.some(function (category) {
 
-            heart.textContent = alreadyWishlisted ? "♥" : "♡";
+            return category.toLowerCase() === newName.toLowerCase()
+                && (
+                    !editingCategory ||
+                    category.toLowerCase() !== editingCategory.toLowerCase()
+                );
 
-            heart.setAttribute(
-                "aria-label",
-                alreadyWishlisted
-                    ? "Remove from wishlist"
-                    : "Add to wishlist"
-            );
+        });
 
-            if (alreadyWishlisted) {
-                heart.classList.add("active");
+        if (duplicate) {
+            showMessage("This category already exists.", "error");
+            categoryInput.focus();
+            return;
+        }
+
+        if (editingCategory) {
+
+            const index = categories.findIndex(function (category) {
+                return category.toLowerCase() === editingCategory.toLowerCase();
+            });
+
+            if (index === -1) {
+                showMessage("Category could not be found. Please refresh the page.", "error");
+                return;
             }
 
-            imageBox.append(heart, image);
+            const oldName = categories[index];
 
-            // PRODUCT CATEGORY
-            const categoryText = document.createElement("p");
+            categories[index] = newName;
 
-            categoryText.className = "product-category";
-            categoryText.textContent = product.category;
+            // Update matching product category names too
+            products.forEach(function (product) {
 
-            // PRODUCT NAME
-            const name = document.createElement("h3");
-            name.textContent = product.name;
+                if (
+                    String(product.category || "").trim().toLowerCase()
+                    === oldName.toLowerCase()
+                ) {
+                    product.category = newName;
+                }
 
-            // PRODUCT PRICE
-            const price = document.createElement("p");
+            });
 
-            price.className = "price";
+            if (!saveCategories()) return;
 
-            price.textContent =
-                "₹" + product.price.toLocaleString("en-IN");
+            saveProducts();
 
-            // PRODUCT MATERIAL
-            const material = document.createElement("p");
+            showMessage("Category updated successfully!", "success");
 
-            material.className = "product-material";
+        } else {
 
-            material.textContent =
-                "Material: " + product.material;
+            categories.push(newName);
 
-            // DELIVERY INFORMATION
-            const delivery = document.createElement("p");
+            if (!saveCategories()) {
+                categories.pop();
+                return;
+            }
 
-            delivery.className = "product-delivery";
+            showMessage("New category added successfully!", "success");
 
-            delivery.textContent =
-                "Delivery in " + product.deliveryDays + " days";
+        }
 
-            // VIEW DETAILS LINK
-            const details = document.createElement("a");
+        renderCategories();
 
-            details.className = "product-button";
-            details.textContent = "VIEW DETAILS";
+        // Close form after a successful save
+        setTimeout(function () {
+            closeForm();
+            renderCategories();
+        }, 700);
 
-            const productParams = new URLSearchParams();
+    });
 
-            productParams.set("name", product.name);
-            productParams.set("price", product.price);
-            productParams.set("category", product.category);
-            productParams.set("image", product.image || "");
-            productParams.set("material", product.material);
-            productParams.set("deliveryDays", product.deliveryDays);
+    // =========================================
+    // EDIT / DELETE BUTTON ACTIONS
+    // =========================================
 
-            details.href =
-                "product-details.html?" + productParams.toString();
+    categoryList.addEventListener("click", function (event) {
 
-            // ADD EVERYTHING TO CARD
-            card.append(
-                imageBox,
-                categoryText,
-                name,
-                price,
-                material,
-                delivery,
-                details
+        const editButton = event.target.closest(".velora-edit-category");
+        const deleteButton = event.target.closest(".velora-delete-category");
+
+        if (editButton) {
+
+            openForm(editButton.dataset.category);
+            return;
+
+        }
+
+        if (deleteButton) {
+
+            const category = deleteButton.dataset.category;
+            const count = getProductCount(category);
+
+            if (count > 0) {
+
+                alert(
+                    `This category contains ${count} product(s).\n\nPlease move or remove those products before deleting this category.`
+                );
+
+                return;
+            }
+
+            const confirmed = confirm(
+                `Are you sure you want to delete "${category}"?\n\nThis action cannot be undone.`
             );
 
-            container.appendChild(card);
+            if (!confirmed) return;
 
+            categories = categories.filter(function (item) {
+                return item.toLowerCase() !== category.toLowerCase();
+            });
+
+            if (!saveCategories()) {
+                loadData();
+                renderCategories();
+                return;
+            }
+
+            renderCategories();
+
+            showMessage(
+                `"${category}" has been deleted successfully.`,
+                "success"
+            );
+
+        }
+
+    });
+
+    // =========================================
+    // SEARCH
+    // =========================================
+
+    if (searchInput) {
+        searchInput.addEventListener("input", renderCategories);
+    }
+
+    // =========================================
+    // FORM BUTTONS
+    // =========================================
+
+    if (showFormButton) {
+        showFormButton.addEventListener("click", function () {
+            openForm(null);
         });
-
     }
 
-    // FILTER EVENT LISTENERS
-    if (minPrice) {
-        minPrice.addEventListener("input", displayProducts);
+    if (cancelButton) {
+        cancelButton.addEventListener("click", closeForm);
     }
 
-    if (maxPrice) {
-        maxPrice.addEventListener("input", displayProducts);
+    if (cancelSecondary) {
+        cancelSecondary.addEventListener("click", closeForm);
     }
 
-    if (materialFilter) {
-        materialFilter.addEventListener("change", displayProducts);
-    }
+    // =========================================
+    // REFRESH WHEN OTHER PAGES CHANGE DATA
+    // =========================================
 
-    if (deliveryFilter) {
-        deliveryFilter.addEventListener("change", displayProducts);
-    }
+    window.addEventListener("storage", function (event) {
 
-    if (sortFilter) {
-        sortFilter.addEventListener("change", displayProducts);
-    }
+        if (
+            event.key === STORAGE_KEY ||
+            event.key === PRODUCTS_KEY
+        ) {
+            loadData();
+            renderCategories();
+        }
 
-    // CLEAR FILTERS
-    if (clearButton) {
+    });
 
-        clearButton.addEventListener("click", function () {
+    // =========================================
+    // INITIALISE
+    // =========================================
 
-            if (minPrice) minPrice.value = "";
-            if (maxPrice) maxPrice.value = "";
-
-            if (materialFilter) materialFilter.value = "ALL";
-            if (deliveryFilter) deliveryFilter.value = "ALL";
-            if (sortFilter) sortFilter.value = "default";
-
-            updateHeading();
-            displayProducts();
-
-        });
-
-    }
-
-    // INITIAL DISPLAY
-    updateHeading();
-    displayProducts();
+    loadData();
+    renderCategories();
 
 });

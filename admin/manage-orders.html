@@ -1,153 +1,334 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Customer Orders | VÊLORA</title>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="admin-page">
+<body class="admin-page velora-orders-page">
 
-    <header class="admin-header">
+<header class="admin-header">
 
-        <div class="admin-logo">
-            VÊLORA
-            <span>ADMIN PANEL</span>
-        </div>
-
-        <div class="admin-header-right">
-            <span>Welcome, Admin</span>
-            <a href="login.html" class="admin-logout">LOG OUT</a>
-        </div>
-
-    </header>
-
-    <div class="admin-container">
-
-        <aside class="admin-sidebar">
-
-            <h3>MAIN MENU</h3>
-
-            <a href="dashboard.html">
-                <span>▦</span> Dashboard
-            </a>
-
-            <a href="manage-categories.html">
-                <span>▤</span> Manage Categories
-            </a>
-
-            <a href="manage-products.html">
-                <span>♧</span> Manage Products
-            </a>
-
-            <a href="manage-orders.html" class="active">
-                <span>☷</span> Customer Orders
-            </a>
-
-            <a href="delivery.html">
-                <span>➜</span> Delivery Management
-            </a>
-
-            <div class="sidebar-bottom">
-                <a href="../index.html">VIEW CUSTOMER STORE</a>
-                <a href="login.html">LOG OUT</a>
-            </div>
-
-        </aside>
-
-        <main class="admin-main">
-
-            <div class="admin-page-heading">
-                <div>
-                    <p>VÊLORA MANAGEMENT SYSTEM</p>
-                    <h1>Customer Orders</h1>
-                    <span>
-                        View, track and manage customer purchases.
-                    </span>
-                </div>
-            </div>
-
-            <section class="order-admin-stats">
-
-                <div>
-                    <span>TOTAL ORDERS</span>
-                    <h2 id="total-orders">4</h2>
-                    <p>All customer orders</p>
-                </div>
-
-                <div>
-                    <span>PENDING</span>
-                    <h2 id="pending-orders">2</h2>
-                    <p>Awaiting processing</p>
-                </div>
-
-                <div>
-                    <span>SHIPPED</span>
-                    <h2 id="shipped-orders">1</h2>
-                    <p>On the way</p>
-                </div>
-
-                <div>
-                    <span>DELIVERED</span>
-                    <h2 id="delivered-orders">1</h2>
-                    <p>Successfully delivered</p>
-                </div>
-
-            </section>
-
-            <section class="order-admin-card">
-
-                <div class="order-admin-heading">
-
-                    <div>
-                        <h2>All Customer Orders</h2>
-                        <p>Review orders and manage their status.</p>
-                    </div>
-
-                    <select id="order-status-filter">
-                        <option value="ALL">All Orders</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Shipped">Shipped</option>
-                        <option value="Delivered">Delivered</option>
-                        <option value="Cancelled">Cancelled</option>
-                    </select>
-
-                </div>
-
-                <div class="admin-table-wrapper">
-
-                    <table class="orders-table">
-
-                        <thead>
-                            <tr>
-                                <th>ORDER ID</th>
-                                <th>CUSTOMER</th>
-                                <th>PRODUCT</th>
-                                <th>AMOUNT</th>
-                                <th>DATE</th>
-                                <th>STATUS</th>
-                                <th>ACTION</th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="admin-orders-list"></tbody>
-
-                    </table>
-
-                </div>
-
-                <p id="order-message"></p>
-
-            </section>
-
-        </main>
-
+    <div class="admin-logo">
+        VÊLORA
+        <span>ADMIN PANEL</span>
     </div>
 
-    <script src="../js/admin-orders.js"></script>
+    <div class="admin-header-right">
+        <span>Welcome, Admin</span>
+        <a href="login.html" class="admin-logout">LOG OUT</a>
+    </div>
 
+</header>
+
+<div class="admin-container">
+
+    <aside class="admin-sidebar">
+
+        <h3>MAIN MENU</h3>
+
+        <a href="dashboard.html">
+            <span>▦</span> Dashboard
+        </a>
+
+        <a href="manage-categories.html">
+            <span>▤</span> Manage Categories
+        </a>
+
+        <a href="manage-products.html">
+            <span>♧</span> Manage Products
+        </a>
+
+        <a href="manage-orders.html" class="active">
+            <span>☷</span> Customer Orders
+        </a>
+
+        <a href="delivery.html">
+            <span>➜</span> Delivery Management
+        </a>
+
+        <div class="sidebar-bottom">
+            <a href="../index.html">VIEW CUSTOMER STORE</a>
+            <a href="login.html">LOG OUT</a>
+        </div>
+
+    </aside>
+
+    <main class="admin-main velora-orders-main">
+
+        <section class="velora-orders-heading">
+
+            <div>
+                <p class="velora-orders-eyebrow">
+                    VÊLORA MANAGEMENT SYSTEM / SALES
+                </p>
+
+                <h1>Customer Orders</h1>
+
+                <p class="velora-orders-subtitle">
+                    Manage customer purchases, monitor order progress
+                    and deliver an exceptional shopping experience.
+                </p>
+            </div>
+
+            <div class="velora-orders-heading-actions">
+                <span class="velora-live-indicator">
+                    <span></span> ORDER MANAGEMENT
+                </span>
+            </div>
+
+        </section>
+
+        <!-- ORDER SUMMARY -->
+
+        <section class="velora-order-stats">
+
+            <article class="velora-order-stat">
+                <div class="velora-order-stat-top">
+                    <span>TOTAL ORDERS</span>
+                    <span class="velora-order-stat-icon">▤</span>
+                </div>
+                <h2 id="total-orders">0</h2>
+                <p>All customer purchases</p>
+            </article>
+
+            <article class="velora-order-stat pending-stat">
+                <div class="velora-order-stat-top">
+                    <span>PENDING</span>
+                    <span class="velora-order-stat-icon">◷</span>
+                </div>
+                <h2 id="pending-orders">0</h2>
+                <p>Awaiting processing</p>
+            </article>
+
+            <article class="velora-order-stat processing-stat">
+                <div class="velora-order-stat-top">
+                    <span>PROCESSING</span>
+                    <span class="velora-order-stat-icon">⚙</span>
+                </div>
+                <h2 id="processing-orders">0</h2>
+                <p>Being prepared</p>
+            </article>
+
+            <article class="velora-order-stat shipped-stat">
+                <div class="velora-order-stat-top">
+                    <span>SHIPPED</span>
+                    <span class="velora-order-stat-icon">➜</span>
+                </div>
+                <h2 id="shipped-orders">0</h2>
+                <p>Orders on the way</p>
+            </article>
+
+            <article class="velora-order-stat delivered-stat">
+                <div class="velora-order-stat-top">
+                    <span>DELIVERED</span>
+                    <span class="velora-order-stat-icon">✓</span>
+                </div>
+                <h2 id="delivered-orders">0</h2>
+                <p>Successfully completed</p>
+            </article>
+
+            <article class="velora-order-stat cancelled-stat">
+                <div class="velora-order-stat-top">
+                    <span>CANCELLED</span>
+                    <span class="velora-order-stat-icon">×</span>
+                </div>
+                <h2 id="cancelled-orders">0</h2>
+                <p>Cancelled purchases</p>
+            </article>
+
+        </section>
+
+        <!-- ORDER TABLE -->
+
+        <section class="velora-orders-panel">
+
+            <div class="velora-orders-panel-heading">
+
+                <div>
+                    <p class="velora-panel-eyebrow">ORDER OVERVIEW</p>
+                    <h2>All Customer Orders</h2>
+                    <p>
+                        Review customer purchases and manage every order
+                        from one place.
+                    </p>
+                </div>
+
+                <div class="velora-order-count-label">
+                    <span class="velora-count-dot"></span>
+                    LIVE INVENTORY ORDERS
+                </div>
+
+            </div>
+
+            <!-- SEARCH AND FILTERS -->
+
+            <div class="velora-order-toolbar">
+
+                <div class="velora-order-search">
+                    <span>⌕</span>
+
+                    <input
+                        type="search"
+                        id="order-search"
+                        placeholder="Search order ID, customer or email..."
+                        autocomplete="off"
+                    >
+                </div>
+
+                <select id="order-status-filter">
+                    <option value="ALL">All Order Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Processing">Processing</option>
+                    <option value="Shipped">Shipped</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+
+                <select id="order-sort-filter">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="highest">Highest Amount</option>
+                    <option value="lowest">Lowest Amount</option>
+                </select>
+
+            </div>
+
+            <!-- TABLE INFORMATION -->
+
+            <div class="velora-orders-table-heading">
+
+                <div>
+                    <h3>Order Records</h3>
+                    <p>Customer order history and fulfilment status</p>
+                </div>
+
+                <span id="order-results-count">
+                    All orders
+                </span>
+
+            </div>
+
+            <!-- ORDER TABLE -->
+
+            <div class="admin-table-wrapper velora-orders-table-wrapper">
+
+                <table class="orders-table velora-orders-table">
+
+                    <thead>
+                        <tr>
+                            <th>ORDER DETAILS</th>
+                            <th>CUSTOMER</th>
+                            <th>PRODUCTS</th>
+                            <th>AMOUNT</th>
+                            <th>ORDER DATE</th>
+                            <th>STATUS</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="admin-orders-list">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- EMPTY STATE -->
+
+            <div
+                class="velora-orders-empty"
+                id="order-empty-state"
+                style="display:none;"
+            >
+                <div class="velora-empty-icon">▤</div>
+
+                <h3>No orders found</h3>
+
+                <p>
+                    No customer orders match your current search or filter.
+                </p>
+            </div>
+
+            <!-- FEEDBACK -->
+
+            <p
+                id="order-message"
+                class="velora-order-message"
+                aria-live="polite"
+            ></p>
+
+        </section>
+
+        <!-- ORDER DETAILS MODAL -->
+
+        <div
+            class="velora-order-modal"
+            id="order-details-modal"
+            style="display:none;"
+            aria-hidden="true"
+        >
+
+            <div
+                class="velora-order-modal-backdrop"
+                id="close-order-modal-backdrop"
+            ></div>
+
+            <div
+                class="velora-order-modal-content"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="order-modal-title"
+            >
+
+                <div class="velora-order-modal-header">
+
+                    <div>
+                        <p>VÊLORA ORDER MANAGEMENT</p>
+                        <h2 id="order-modal-title">Order Details</h2>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="close-order-modal"
+                        class="velora-modal-close"
+                        aria-label="Close order details"
+                    >×</button>
+
+                </div>
+
+                <div
+                    id="order-details-content"
+                    class="velora-order-details-content"
+                >
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- IMPORTANT: LOAD THE JAVASCRIPT FILES -->
+
+<script src="../js/admin-guard.js"></script>
+<script src="../js/admin-orders.js"></script>
+<script src="../js/admin-guard.js"></script>
+<script src="../js/admin-orders.js"></script>
+<script src="../js/admin-support-requests.js"></script>
 </body>
 </html>

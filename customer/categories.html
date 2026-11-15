@@ -20,13 +20,10 @@
             <span>FASHION FOR A BRIGHTER YOU</span>
         </div>
 
-        <nav>
+        <nav id="customer-category-links">
             <a href="../index.html">HOME</a>
             <a href="categories.html?category=ALL">SHOP</a>
-            <a href="categories.html?category=MEN">MEN</a>
-            <a href="categories.html?category=WOMEN">WOMEN</a>
-            <a href="categories.html?category=KIDS">KIDS</a>
-            <a href="categories.html?category=MATERNITY">MATERNITY</a>
+            <!-- Category links will load from Admin Panel -->
         </nav>
 
         <div class="header-icons">
@@ -44,120 +41,96 @@
             Discover styles made for every moment.
         </p>
 
-        
-        
-<!-- SHOPPING LAYOUT -->
+        <div class="shop-layout">
 
-<!-- SHOPPING LAYOUT -->
-<div class="shop-layout">
+            <aside class="shop-filter">
 
-    <!-- LEFT FILTER SIDEBAR -->
-    <aside class="shop-filter">
+                <div class="filter-heading">
+                    <h2>FILTERS</h2>
+                    <button type="button" id="clear-filters">CLEAR ALL</button>
+                </div>
 
-        <div class="filter-heading">
-            <h2>FILTERS</h2>
-            <button type="button" id="clear-filters">CLEAR ALL</button>
-        </div>
+                <div class="filter-group">
+                    <h3>STYLE</h3>
+                    <select id="filter-style">
+                        <option value="ALL">All Styles</option>
+                        <option value="ETHNIC">Ethnic</option>
+                        <option value="WESTERN">Western</option>
+                    </select>
+                </div>
 
-        <!-- CATEGORY / STYLE -->
-        <div class="filter-group">
-            <h3>STYLE</h3>
-            <select id="filter-style">
-                <option value="ALL">All Styles</option>
-                <option value="ETHNIC">Ethnic</option>
-                <option value="WESTERN">Western</option>
-            </select>
-        </div>
+                <div class="filter-group">
+                    <h3>PRICE RANGE</h3>
+                    <div class="price-inputs">
+                        <input type="number" id="min-price" placeholder="Min ₹">
+                        <input type="number" id="max-price" placeholder="Max ₹">
+                    </div>
+                </div>
 
-        <!-- PRICE -->
-        <div class="filter-group">
-            <h3>PRICE RANGE</h3>
-            <div class="price-inputs">
-                <input type="number" id="min-price"
-                    placeholder="Min ₹">
-                <input type="number" id="max-price"
-                    placeholder="Max ₹">
-            </div>
-        </div>
+                <div class="filter-group">
+                    <h3>SIZE</h3>
+                    <select id="filter-size">
+                        <option value="ALL">All Sizes</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
 
-        <!-- SIZE -->
-        <div class="filter-group">
-            <h3>SIZE</h3>
-            <select id="filter-size">
-              <option value="ALL">All Sizes</option>
-                <option value="XS">XS</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="XXL">XXL</option>
-            </select>
-        </div>
+                <div class="filter-group">
+                    <h3>MATERIAL</h3>
+                    <select id="filter-material">
+                        <option value="ALL">All Materials</option>
+                        <option value="Cotton">Cotton</option>
+                        <option value="Denim">Denim</option>
+                        <option value="Polyester">Polyester</option>
+                        <option value="Linen">Linen</option>
+                        <option value="Silk">Silk</option>
+                    </select>
+                </div>
 
-        <!-- MATERIAL -->
-        <div class="filter-group">
-            <h3>MATERIAL</h3>
-            <select id="filter-material">
-                <option value="ALL">All Materials</option>
-                <option value="Cotton">Cotton</option>
-                <option value="Denim">Denim</option>
-                <option value="Polyester">Polyester</option>
-                <option value="Linen">Linen</option>
-                <option value="Silk">Silk</option>
-            </select>
-        </div>
+                <div class="filter-group">
+                    <h3>DELIVERY TIME</h3>
+                    <select id="filter-delivery">
+                        <option value="ALL">Any Time</option>
+                        <option value="2">Within 2 Days</option>
+                        <option value="5">Within 5 Days</option>
+                        <option value="7">Within 7 Days</option>
+                    </select>
+                </div>
 
-        <!-- DELIVERY -->
-        <div class="filter-group">
-            <h3>DELIVERY TIME</h3>
-            <select id="filter-delivery">
-                <option value="ALL">Any Time</option>
-                <option value="2">Within 2 Days</option>
-                <option value="5">Within 5 Days</option>
-                <option value="7">Within 7 Days</option>
-            </select>
-        </div>
+                <button type="button" id="apply-filters">
+                    APPLY FILTERS
+                </button>
 
-        <button type="button" id="apply-filters">
-            APPLY FILTERS
-        </button>
+            </aside>
 
-    </aside>
+            <section class="shop-results">
 
+                <div class="shop-toolbar">
+                    <p id="product-count">Showing products</p>
 
-    <!-- RIGHT PRODUCT AREA -->
-    <section class="shop-results">
+                    <select id="sort-products">
+                        <option value="default">Recommended</option>
+                        <option value="newest">What's New</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                    </select>
+                </div>
 
-        <div class="shop-toolbar">
+                <div id="category-products" class="product-grid"></div>
 
-            <p id="product-count">Showing products</p>
+                <p id="no-products" hidden>
+                    No products match your selected filters.
+                    Try changing or clearing your filters.
+                </p>
 
-            <select id="sort-products">
-                <option value="default">Recommended</option>
-                <option value="newest">What's New</option>
-                <option value="low-high">Price: Low to High</option>
-                <option value="high-low">Price: High to Low</option>
-            </select>
+            </section>
 
         </div>
-
-        <!-- PRODUCT GRID -->
-        <div id="category-products" class="product-grid"></div>
-
-        <p id="no-products" hidden>
-            No products match your selected filters.
-            Try changing or clearing your filters.
-        </p>
-
-    </section>
-
-</div>
-
-
-              
-
- 
-                   
 
     </main>
 

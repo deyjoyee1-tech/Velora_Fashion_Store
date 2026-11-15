@@ -4292,8 +4292,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 23px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 18px;
 }
 
 .main-header nav a,
@@ -6368,5 +6369,596 @@ body > footer a:hover {
 @media (max-width: 480px) {
     .velora-search {
         width: 100%;
+    }
+}
+
+/* =========================================
+   VÊLORA — LUXURY LOGIN & SIGNUP HEADER
+========================================= */
+
+.header-login,
+.header-signup,
+.header-account {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.header-login {
+    color: #49382d;
+    padding: 10px 5px;
+}
+
+.header-login:hover {
+    color: #a17b55;
+}
+
+.header-signup {
+    background: #49382d;
+    color: #ffffff !important;
+    padding: 11px 17px;
+    border: 1px solid #49382d;
+    border-radius: 3px;
+}
+
+.header-signup:hover {
+    background: #a17b55;
+    border-color: #a17b55;
+    transform: translateY(-1px);
+}
+
+.header-account {
+    color: #49382d;
+    padding: 10px 5px;
+}
+
+.header-account:hover {
+    color: #a17b55;
+}
+
+/* Keep header actions aligned */
+.main-header .header-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+/* Mobile header */
+@media (max-width: 768px) {
+
+    .main-header .header-icons {
+        gap: 9px;
+        flex-wrap: wrap;
+    }
+
+    .header-login,
+    .header-signup,
+    .header-account {
+        font-size: 9px;
+    }
+
+    .header-signup {
+        padding: 8px 10px;
+    }
+}
+
+/* =========================================
+   VÊLORA CUSTOMER ORDER ACTIONS
+========================================= */
+
+.customer-order-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0;
+    padding-top: 18px;
+    border-top: 1px solid #e9e1d8;
+}
+
+.order-action-button {
+    border: 1px solid #49382d;
+    padding: 12px 20px;
+    background: #49382d;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.order-action-button:hover {
+    background: #a17b55;
+    border-color: #a17b55;
+    transform: translateY(-2px);
+}
+
+.cancel-order-button {
+    background: #fff;
+    color: #9b4747;
+    border-color: #c58c8c;
+}
+
+.cancel-order-button:hover {
+    background: #9b4747;
+    color: #fff;
+    border-color: #9b4747;
+}
+
+.return-order-button {
+    background: #49382d;
+}
+
+.exchange-order-button {
+    background: #71806b;
+    border-color: #71806b;
+}
+
+.exchange-order-button:hover {
+    background: #53634e;
+    border-color: #53634e;
+}
+
+.return-deadline-note,
+.return-expired-note,
+.request-notice {
+    flex-basis: 100%;
+    margin: 5px 0;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #71806b;
+}
+
+.return-expired-note {
+    color: #a04f4f;
+}
+
+.request-notice {
+    color: #80664e;
+}
+
+/* REQUEST HISTORY */
+
+.velora-request-history {
+    margin-top: 20px;
+    padding: 18px;
+    background: #f8f5f0;
+    border: 1px solid #e8dfd4;
+}
+
+.velora-request-history h4 {
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    color: #49382d;
+}
+
+.velora-request-row {
+    padding: 12px 0;
+    border-top: 1px solid #e8dfd4;
+}
+
+.velora-request-row strong {
+    color: #71806b;
+    font-size: 13px;
+}
+
+.velora-request-row p {
+    font-size: 12px;
+    color: #776b60;
+    margin-top: 5px;
+}
+
+/* REQUEST MODAL */
+
+.velora-request-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    background: rgba(35, 27, 22, 0.65);
+}
+
+.velora-request-modal {
+    width: 100%;
+    max-width: 490px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 32px;
+    background: #fffdf9;
+    border: 1px solid #e5d9cb;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+}
+
+.velora-request-modal h2 {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    color: #49382d;
+    margin-bottom: 10px;
+}
+
+.velora-request-description {
+    color: #82756a;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.velora-request-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.velora-request-form label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #49382d;
+    margin-top: 8px;
+}
+
+.velora-request-form select,
+.velora-request-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ded4c9;
+    background: #fff;
+    color: #49382d;
+    font: inherit;
+    font-size: 13px;
+    outline: none;
+}
+
+.velora-request-form select:focus,
+.velora-request-form textarea:focus {
+    border-color: #a17b55;
+}
+
+.velora-request-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.velora-request-actions button {
+    flex: 1;
+    padding: 13px 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: 1px solid #49382d;
+}
+
+.velora-request-cancel {
+    background: #fff;
+    color: #49382d;
+}
+
+.velora-request-submit {
+    background: #49382d;
+    color: #fff;
+}
+
+.velora-request-submit:hover {
+    background: #a17b55;
+}
+
+@media (max-width: 600px) {
+    .customer-order-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .order-action-button {
+        width: 100%;
+    }
+
+    .velora-request-modal {
+        padding: 22px;
+    }
+}
+
+/* COLLAPSIBLE ORDER REQUEST HISTORY */
+
+.velora-request-history {
+    margin-top: 15px;
+    border: 1px solid #e9dfd3;
+    border-radius: 8px;
+    background: #fffdf9;
+    overflow: hidden;
+}
+
+.velora-request-dropdown {
+    padding: 13px 16px;
+    cursor: pointer;
+    color: #594638;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.velora-request-dropdown::-webkit-details-marker {
+    display: none;
+}
+
+.velora-request-dropdown::after {
+    content: "+";
+    font-size: 19px;
+    color: #927b65;
+}
+
+.velora-request-history[open] .velora-request-dropdown::after {
+    content: "−";
+}
+
+.velora-request-history-content {
+    padding: 0 15px 12px;
+}
+
+.velora-request-row {
+    padding: 12px;
+    margin-top: 8px;
+    background: #f8f5f0;
+    border-radius: 6px;
+}
+
+.velora-request-row p {
+    margin: 5px 0 0;
+    font-size: 12px;
+    color: #827467;
+}
+
+/* ==========================================
+   VÊLORA — LUXURY SHOPPING BAG SUMMARY
+   ========================================== */
+
+.velora-summary {
+    width: 100%;
+    max-width: 410px;
+    margin: 0 0 0 auto;
+    padding: 32px;
+    background: #faf7f2;
+    border: 1px solid #e8ded1;
+    border-radius: 4px;
+    box-shadow: 0 12px 35px rgba(62, 44, 31, 0.055);
+    align-self: start;
+}
+
+.velora-summary .summary-top {
+    margin-bottom: 24px;
+}
+
+.velora-summary .summary-eyebrow {
+    display: block;
+    margin: 0 0 10px;
+    color: #a18467;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+}
+
+.velora-summary .summary-top h2 {
+    margin: 0;
+    color: #392b22;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.velora-summary .summary-description {
+    display: block;
+    margin: 10px 0 0;
+    color: #8b7d70;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.velora-summary .cart-summary-divider {
+    height: 1px;
+    margin: 22px 0;
+    background: #e7ddd1;
+}
+
+.velora-summary .summary-price-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.velora-summary .cart-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+    padding: 12px 0;
+    color: #76695e;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.velora-summary .cart-summary-row strong {
+    color: #40342b;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.velora-summary .cart-discount-row strong {
+    color: #71866b;
+}
+
+.velora-summary .summary-total-panel {
+    margin-top: 17px;
+    padding: 21px 18px;
+    background: #eee6da;
+    border: 1px solid #e4d8c8;
+}
+
+.velora-summary .summary-total-panel > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.velora-summary .summary-total-label {
+    color: #695748;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.3px;
+}
+
+.velora-summary #cart-total {
+    color: #38291f;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.velora-summary .summary-tax-note {
+    display: block;
+    margin-top: 9px;
+    color: #897969;
+    font-size: 10px;
+}
+
+.velora-summary .summary-delivery-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 21px 0;
+    padding: 14px;
+    background: #f2eee6;
+    border-left: 2px solid #a58a6b;
+}
+
+.velora-summary .summary-delivery-icon {
+    color: #987a59;
+    font-size: 20px;
+}
+
+.velora-summary .summary-delivery-note p {
+    display: block;
+    margin: 0;
+    color: #76685b;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.velora-summary .summary-delivery-note strong {
+    color: #6e815f;
+    letter-spacing: .5px;
+}
+
+.velora-summary .summary-checkout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 54px;
+    margin: 0;
+    padding: 16px 19px;
+    background: #49372a;
+    border: 1px solid #49372a;
+    border-radius: 2px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    transition: background .3s ease, border-color .3s ease;
+}
+
+.velora-summary .summary-checkout:hover {
+    background: #80664f;
+    border-color: #80664f;
+}
+
+.velora-summary .summary-checkout span {
+    font-size: 19px;
+    transition: transform .3s ease;
+}
+
+.velora-summary .summary-checkout:hover span {
+    transform: translateX(4px);
+}
+
+.velora-summary .summary-trust {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 23px;
+    padding-top: 19px;
+    border-top: 1px solid #e8ded1;
+}
+
+.velora-summary .summary-trust > div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.velora-summary .summary-trust span {
+    color: #967b60;
+    font-size: 17px;
+}
+
+.velora-summary .summary-trust p {
+    display: block;
+    margin: 0;
+    color: #77695d;
+    font-size: 9px;
+    letter-spacing: .7px;
+}
+
+.velora-summary .summary-footer-note {
+    display: block;
+    margin: 22px 0 0;
+    color: #a18c78;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+/* SHOPPING BAG RESPONSIVE */
+
+@media (max-width: 850px) {
+    .velora-summary {
+        max-width: 100%;
+        margin: 15px 0 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .velora-summary {
+        padding: 23px 19px;
+    }
+
+    .velora-summary .summary-top h2 {
+        font-size: 23px;
+    }
+
+    .velora-summary .summary-trust {
+        gap: 15px;
     }
 }

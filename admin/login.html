@@ -1,55 +1,133 @@
 
-/* ADMIN LOGIN PAGE IMPROVEMENTS */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.admin-login-icon {
-    width: 55px;
-    height: 55px;
-    margin: 0 auto 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #e8dfd5;
-    border-radius: 50%;
-    color: #a98260;
-    font-size: 27px;
-}
+    <title>Admin Login | VÊLORA</title>
 
-.admin-login-message {
-    min-height: 20px;
-    margin: 12px 0;
-    font-size: 12px;
-    line-height: 1.5;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-.admin-login-divider {
-    height: 1px;
-    background: #e8dfd5;
-    margin: 25px 0;
-}
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-.admin-demo-note {
-    margin-top: 25px;
-    color: #999;
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-align: center;
-}
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
 
-.admin-login-button:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-}
+<body class="admin-login-page">
 
-.admin-login-card input:focus {
-    outline: none;
-    border-color: #a98260;
-    box-shadow: 0 0 0 2px rgba(169, 130, 96, 0.12);
-}
+    <main class="admin-login-layout">
 
-.admin-login-button {
-    transition: background 0.3s ease, transform 0.3s ease;
-}
+        <section class="admin-login-visual">
+            <div class="login-brand">
+                VÊLORA
+                <span>FASHION FOR A BRIGHTER YOU</span>
+            </div>
 
-.admin-login-button:hover:not(:disabled) {
-    transform: translateY(-2px);
-}
+            <div class="login-visual-content">
+                <p class="login-eyebrow">THE BUSINESS OF STYLE</p>
+
+                <h1>
+                    Elegance in every detail.
+                    <em>Control in every decision.</em>
+                </h1>
+
+                <p>
+                    Manage your collections, customers and orders
+                    through your VÊLORA management workspace.
+                </p>
+            </div>
+
+            <div class="login-visual-footer">
+                <span>VÊLORA MANAGEMENT SYSTEM</span>
+                <span>EST. 2026</span>
+            </div>
+        </section>
+
+        <section class="admin-login-content">
+
+            <div class="admin-login-card">
+
+                <a href="../index.html" class="login-back-link">
+                    ← Back to customer store
+                </a>
+
+                <div class="admin-login-icon">✦</div>
+
+                <p class="login-eyebrow">WELCOME BACK</p>
+
+                <h2>Admin Sign In</h2>
+
+                <p class="login-description">
+                    Sign in to access your store management dashboard.
+                </p>
+
+                <form id="admin-login-form">
+
+                    <label for="admin-email">Email Address</label>
+
+                    <input
+                        type="email"
+                        id="admin-email"
+                        placeholder="Enter admin email"
+                        autocomplete="username"
+                        required
+                    >
+
+                    <label for="admin-password">Password</label>
+
+                    <div class="login-password-wrapper">
+                        <input
+                            type="password"
+                            id="admin-password"
+                            placeholder="Enter password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="toggle-admin-password"
+                            aria-label="Show password"
+                        >
+                            SHOW
+                        </button>
+                    </div>
+
+                    <p
+                        id="admin-login-message"
+                        class="admin-login-message"
+                        role="alert"
+                    ></p>
+
+                    <button
+                        type="submit"
+                        class="admin-login-button"
+                    >
+                        SIGN IN TO DASHBOARD
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+                <div class="admin-login-divider"></div>
+
+                <p class="admin-demo-note">
+                    AUTHORIZED STORE ADMINISTRATION ONLY
+                </p>
+
+                <a href="../index.html" class="login-customer-link">
+                    Return to VÊLORA Fashion Store
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../js/admin-login.js"></script>
+
+</body>
+</html>
